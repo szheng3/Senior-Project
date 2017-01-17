@@ -44,14 +44,25 @@ file://${requestScope["download"]}
     String txtFilePath = outputAddr+ "/output.txt";
     BufferedReader bfrdr = new BufferedReader(new FileReader(txtFilePath));
     String line;
-
+    String[][] splittedLine = new String[17][17];
+    int j=0;
     while((line = bfrdr.readLine())!= null){
-        out.print(line);
+        String[] parts = line.split("\\s+");
+        for(int i=0; i<17; i++)
+            splittedLine[i][j] = parts[i];
+        j++;
+    }
 
-            %>
-        <br/>
+    for(int i=0;i<17;i++) {
+        for(int k=0;k<17;k++) {
+            out.print(splittedLine[k][i]);
+        }
+        %>
+<br/>
+
 <%
     }
+
 %>
 
 
