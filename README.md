@@ -1,18 +1,8 @@
 # SeniorProject
 Made by Team55 Advisor: Prof. Homayoun Yousefi'zadeh
 
-1.7 Java JDK *important!
+Prerequement:
 
-Usage:
-
-To import a Maven project with default settings
-
-
-1. open in IntelliJ IDEA select File | New | Project from Existing Sources
-2. select the directory that contains the project (.porm) to be imported. Click OK
-3. On the first page of the Import Project wizard, select Maven, and click Next
-4. click next until end.
-5. click finish
 
 To simulate the website, below are required:
 
@@ -21,7 +11,7 @@ To simulate the website, below are required:
     http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html
     ![Screenshot](https://cloud.githubusercontent.com/assets/23114334/21918854/6b1d50d8-d90a-11e6-9f40-eef8acdaa23f.png)
 
-2. IntelliJ [Ultimate] Edition
+2. IntelliJ [Ultimate] Edition, which is cross platform IDEA and could be used in Windows, Mac, Linux system
     Can be acquired using student account and download at:
     https://www.jetbrains.com/idea/
 
@@ -30,7 +20,11 @@ To simulate the website, below are required:
     http://jbossas.jboss.org/downloads/
     ![jbossenvironment](https://cloud.githubusercontent.com/assets/23114334/21919583/42a63984-d910-11e6-8c73-55208d2566fa.png)
 
+Usage:
+
+
 With above preparation done, simulate the website with following steps:
+
 
 1.  Open IntelliJ IDEA, Click "Import Project".
     ![idea_00](https://cloud.githubusercontent.com/assets/23114334/21919800/08b9a5f6-d912-11e6-8427-1ae2bb9c61ad.png)
