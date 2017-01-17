@@ -85,7 +85,6 @@ With above preparation done, simulate the website with following steps:
     Shown below is the opened demo version of our project.
     ![idea_15](https://cloud.githubusercontent.com/assets/23114334/21920107/e08af6f0-d913-11e6-8239-181c1ef59467.png)
     ![idea_16](https://cloud.githubusercontent.com/assets/23114334/21920157/27013ed2-d914-11e6-923d-1146084bdcfd.png)
-    ![idea_17](https://cloud.githubusercontent.com/assets/23114334/21920162/2b5b5e2c-d914-11e6-8d6a-a6c372402578.png)
 
 To run our Obfuscated .jar file in JBoss Environment,
 first we need to add the Obfuscated .jar file as lib in IntelliJ.
