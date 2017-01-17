@@ -3,6 +3,11 @@
   Date: 11/22/16
   Time: 11:45 PM
 --%>
+<%@page import="java.io.File"%>
+<%@page import="java.io.InputStreamReader"%>
+<%@page import="java.net.URL"%>
+<%@page import="java.io.FileReader"%>
+<%@page import="java.io.BufferedReader"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -30,6 +35,26 @@ file://${requestScope["download"]}
 
 
 <%--<%response.sendRedirect("file://%>${requestScope["download"]}<%");%>--%>
+<br/>
+
+
+<%
+
+    String outputAddr = session.getServletContext().getRealPath("/");
+    String txtFilePath = outputAddr+ "/output.txt";
+    BufferedReader bfrdr = new BufferedReader(new FileReader(txtFilePath));
+    String line;
+
+    while((line = bfrdr.readLine())!= null){
+        out.print(line);
+
+            %>
+        <br/>
+<%
+    }
+%>
+
+
 </body>
 </html>
 
