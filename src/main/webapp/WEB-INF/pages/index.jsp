@@ -10,8 +10,7 @@
 <body>
 <div>
 
-    <h3> Choose .jar to Upload and Obfuscate in Server </h3>
-    <h4> Note* It needs to take a long time to obfuscate, Plz wait in patient</h4>
+    <h3> Choose .txt to Upload and the johnson algorithm will be run in JBoss Server </h3>
 
     <form action="upload" method="post" enctype="multipart/form-data">
         <input type="file" name="file"/>

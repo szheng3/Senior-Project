@@ -97,31 +97,3 @@ With above preparation done, simulate the website with following steps:
 
 
 
- **Porject Task:**
-
-SetUp Maven Spring: Done--Shuai Zheng
- 
-Delete Spring: Done-- Alex
-
-Upload File, GetFileName(File in the Jboss Container): Done--  Shuai Zheng --revise:Alex
-
-Write Pro file using Java:Done--Shuai Zheng
-
-Obfuscation For Application:Done--Shuai Zheng
-
-Timeout need to fix:Done--Shuai Zheng
-
-**Next:**
-
-
- ProGuard for lib:
-
- Or other open source for Obfuscation:
-
- UI:
-
- Database: Working on by Liu
-
- Write Usage:
-
-
