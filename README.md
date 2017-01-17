@@ -93,7 +93,61 @@ With above preparation done, simulate the website with following steps:
     ![idea_16](https://cloud.githubusercontent.com/assets/23114334/21920157/27013ed2-d914-11e6-923d-1146084bdcfd.png)
     ![idea_17](https://cloud.githubusercontent.com/assets/23114334/21920162/2b5b5e2c-d914-11e6-8d6a-a6c372402578.png)
 
+To run our Obfuscated .jar file in JBoss Environment,
+first we need to add the Obfuscated .jar file as lib in IntelliJ.
+Following below steps to set up lib.
 
+1.  in IntelliJ top left corner, File - Project Structure
+    ![lib00](https://cloud.githubusercontent.com/assets/23114334/22007888/412ea442-dc2b-11e6-88b2-76573bdc7095.png)
+
+
+2.  go to Libraries - click "+" - Java
+    ![lib01](https://cloud.githubusercontent.com/assets/23114334/22007922/92b585c4-dc2b-11e6-8f68-52fe782c3e38.png)
+
+
+3.  Choose the Obfuscated .jar file, it's located in:
+    {Project root location}/src/main/webapp/WEB-INF/lib
+    Click "OK"
+    ![lib02](https://cloud.githubusercontent.com/assets/23114334/22007943/a929c69e-dc2b-11e6-9060-c22cc271be33.png)
+
+
+4.  Click "OK" to add this library as module
+    ![lib02a](https://cloud.githubusercontent.com/assets/23114334/22007977/d62900ec-dc2b-11e6-93df-a972eea535ee.png)
+
+
+5.  now it should be all done.
+    Check Libraries we can see a new 3rd party lib "obfuscated" is added
+    ![lib03](https://cloud.githubusercontent.com/assets/23114334/22007980/de071826-dc2b-11e6-82cf-d8031823ee76.png)
+
+
+6.  Check Modules, a new "obfuscated" module is added.
+    ![lib04](https://cloud.githubusercontent.com/assets/23114334/22008002/01432096-dc2c-11e6-9aa3-496308740cbf.png)
+
+
+7.  Now we should be able to run the Obfuscated .jar in JBoss Environment.
+    Click the run bottom, project will be built and IntelliJ will automatically open the website for us:
+    Click "Choose File" bottom
+    ![web0](https://cloud.githubusercontent.com/assets/23114334/22008047/5f32a3de-dc2c-11e6-8a25-58f33fe3fbd5.png)
+
+
+8.  A window will pop up.
+    The test .jar is a java program which calls Johnsons's Algorithm to sort a given graph.
+    Let's select the data text file for the graph, as shown below:
+    (it is stored in the root folder of this project)
+    Click "Open" johnsonsGraphData.txt
+    ![web1](https://cloud.githubusercontent.com/assets/23114334/22008088/b894db18-dc2c-11e6-948c-8c3a585d556d.png)
+
+
+9.  Click "upload"
+    ![web2](https://cloud.githubusercontent.com/assets/23114334/22008106/de45efb4-dc2c-11e6-8430-86ec0fec16da.png)
+
+
+10. It will upload the data .txt file and Obfuscated Johnson's Algorithm will run.
+    If it runs successfully, the output will be displayed as a table.
+    ![web3](https://cloud.githubusercontent.com/assets/23114334/22008140/28d09ab6-dc2d-11e6-83ba-a97650b6b4c8.png)
+
+    
+    
 
 
 
