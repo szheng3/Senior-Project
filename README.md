@@ -112,6 +112,7 @@ Following below steps to set up lib.
 
 
 4.  Click "OK" to add this library as module
+
     ![lib02a](https://cloud.githubusercontent.com/assets/23114334/22007977/d62900ec-dc2b-11e6-93df-a972eea535ee.png)
 
 
