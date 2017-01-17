@@ -53,17 +53,18 @@ file://${requestScope["download"]}
         j++;
     }
 
-    for(int i=0;i<17;i++) {
-        for(int k=0;k<17;k++) {
-            out.print(splittedLine[k][i]);
-        }
-        %>
-<br/>
-
-<%
-    }
-
 %>
+
+<TABLE>
+    <% for(int row=0;row<17;row++) { %>
+        <TR>
+            <% for(int col=0;col<17;col++) { %>
+                <TD> <%=splittedLine[col][row]%>
+                </TD>
+            <% } %>
+        </TR>
+    <% } %>
+</TABLE>
 
 
 </body>
