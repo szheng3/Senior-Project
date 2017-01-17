@@ -19,14 +19,14 @@
 </head>
 
 <body>
-<div id="result">
+<%--<div id="result">
     <h3>${requestScope["message"]}</h3>
 
-</div>
+</div>--%>
 
 <%--<IFRAME src="file://${requestScope["download"]}"/>--%>
 
-file://${requestScope["download"]}
+<%--file://${requestScope["download"]}--%>
 
 <%--<a href="file://${requestScope["download"]}">--%>
 <%--<img border="0" src="http://publichealthconference.co/2016/wp-content/uploads/2016/01/Click-to-Download.png"--%>
@@ -35,7 +35,9 @@ file://${requestScope["download"]}
 
 
 <%--<%response.sendRedirect("file://%>${requestScope["download"]}<%");%>--%>
+
 <br/>
+
 
 
 <%
@@ -55,7 +57,7 @@ file://${requestScope["download"]}
 
 %>
 
-<TABLE>
+<TABLE style="text-align:center" align="center">
     <% for(int row=0;row<17;row++) { %>
         <TR>
             <% for(int col=0;col<17;col++) { %>
