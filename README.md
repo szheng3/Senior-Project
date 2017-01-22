@@ -140,7 +140,18 @@ Following below steps to set up lib.
     If it runs successfully, the output will be displayed as a table.
     ![web3](https://cloud.githubusercontent.com/assets/23114334/22008140/28d09ab6-dc2d-11e6-83ba-a97650b6b4c8.png)
 
-    
+To use DataBase, set MySQL as following:
+0.  addr = "localhost"
+1.  port = "3306"
+2.  username = "root"
+3.  pw = "123456"
+4.  make sure a DB "test" is in the list.
+
+Add JDBC ver 5.1.40 as lib, it's stored in wepapp/WEB-INF/lib in the project folder.
+Make sure in your IntelliJ Project Structures you see it in BOTH Modules and Libraries. As below:
+    ![mysql0](https://cloud.githubusercontent.com/assets/23114334/22181524/37de19a6-e043-11e6-8b98-aa67efa38635.png)
+    ![mysql1](https://cloud.githubusercontent.com/assets/23114334/22181528/47aa2c6c-e043-11e6-8d8c-914f4d6497fe.png)
+
     
 
 
