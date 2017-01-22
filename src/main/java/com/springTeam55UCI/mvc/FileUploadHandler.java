@@ -1,6 +1,7 @@
 package com.springTeam55UCI.mvc;
 
 import EECS159.ShuaiZheng.Sort.Hw5Johnsons;
+import com.springTeam55UCI.mvc.com.util.ConnectionConfig;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -12,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -49,8 +53,28 @@ public class FileUploadHandler extends HttpServlet {
                         input[1] = request.getSession().getServletContext().getRealPath("");
 
                         new Hw5Johnsons().main(input);
-                        request.setAttribute("download", request.getSession().getServletContext().getRealPath("") + File.separator + "output.txt");
+                        Connection connection = null;
+                        try {
+                            connection = ConnectionConfig.getConnection();
+                            if(connection != null) {
+                                System.out.println("Connection established.");
+                            }
+                            else {
+                                System.out.println("Connection failed.");
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        } finally {
+                            if(connection != null) {
+                                try {
+                                    connection.close();
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
 
+                        request.setAttribute("download", request.getSession().getServletContext().getRealPath("") + File.separator + "output.txt");
 
                     }
                 }
