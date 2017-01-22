@@ -141,6 +141,7 @@ Following below steps to set up lib.
     ![web3](https://cloud.githubusercontent.com/assets/23114334/22008140/28d09ab6-dc2d-11e6-83ba-a97650b6b4c8.png)
 
 To use DataBase, set MySQL as following:
+
 0.  addr = "localhost"
 1.  port = "3306"
 2.  username = "root"
