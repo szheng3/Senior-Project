@@ -71,15 +71,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="/SeniorProjectVersion2/" class="navbar-brand"><span class="glyphicon glyphicon-picture"></span>
+            <a href="" class="navbar-brand"><span class="glyphicon glyphicon-picture"></span>
                 Home</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-nav-demo">
             <ul class="navbar-nav navbar-right nav">
 
 
-                <li><a href="/SeniorProjectVersion2/SignIn">Log In</a></li>
-                <li><a href="/SeniorProjectVersion2/SignUp">Sign Up</a></li>
+                <li><a href="SignIn">Log In</a></li>
+                <li><a href="SignUp">Sign Up</a></li>
 
                 <script>
 
