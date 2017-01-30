@@ -81,19 +81,6 @@
                 <li><a href="SignIn">Log In</a></li>
                 <li><a href="SignUp">Sign Up</a></li>
 
-                <script>
-
-
-                    function myFunction() {
-
-                        var y = document.getElementById("Inputnumber").value;
-
-
-                        window.location.href = 'SearchNormal.jsp?ItemName=' + y;
-
-                    }
-                </script>
-
 
             </ul>
 
