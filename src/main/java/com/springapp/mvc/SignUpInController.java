@@ -21,4 +21,18 @@ public class SignUpInController {
         model.addAttribute("message", "Machine Learning");
         return "SignUp";
     }
+
+
+    @RequestMapping("/Register")
+    public String RegisterMVC(ModelMap model) {
+        model.addAttribute("message", "Machine Learning");
+        return "index";
+    }
+
+
+    @RequestMapping("/Up")
+    public String LogMVC(ModelMap model) {
+        model.addAttribute("message", "Machine Learning");
+        return "index";
+    }
 }

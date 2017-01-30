@@ -6,7 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%--<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>--%>
+<%--<tiles:insertDefinition name="home"/>--%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -61,6 +62,10 @@
 
 <body>
 
+<%--<jsp:include page="hello.jsp"></jsp:include>--%>
+
+<%--<%@ include file="hello.jsp" %>--%>
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -91,6 +96,15 @@
 </nav>
 
 
+<%--<div>--%>
+<%--<tiles:insertAttribute name="header"></tiles:insertAttribute>--%>
+<%--</div>--%>
+
+<%--<div>--%>
+<%--<tiles:insertAttribute name="footer"></tiles:insertAttribute>--%>
+<%--</div>--%>
+
+<%--<tiles:insertAttribute name="title"></tiles:insertAttribute>--%>
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
