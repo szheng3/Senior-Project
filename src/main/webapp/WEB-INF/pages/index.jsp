@@ -78,8 +78,8 @@
             <ul class="navbar-nav navbar-right nav">
 
 
-                <li><a href="/login">Log In</a></li>
-                <li><a href="/register">Sign Up</a></li>
+                <li><a href="/SeniorProjectVersion2/SignIn">Log In</a></li>
+                <li><a href="/SeniorProjectVersion2/SignUp">Sign Up</a></li>
 
                 <script>
 
