@@ -1,15 +1,9 @@
 <%--
   Author: Shuai Zheng
-  Date: 11/9/16
-  Time: 2:44 PM
+  Date: 1/29/17
+  Time: 11:29 PM
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>--%>
-<%--<tiles:insertDefinition name="home"/>--%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -44,7 +38,7 @@
         }
 
         .content {
-            padding-top: 25%;
+            padding-top: 10%;
             text-align: center;
             text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
             0px 8px 13px rgba(0, 0, 0, 0.1),
@@ -62,9 +56,6 @@
 
 <body>
 
-<%--<jsp:include page="hello.jsp"></jsp:include>--%>
-
-<%--<%@ include file="hello.jsp" %>--%>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -76,7 +67,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="" class="navbar-brand"><span class="glyphicon glyphicon-picture"></span>
+            <a href="/SeniorProjectVersion2/" class="navbar-brand"><span class="glyphicon glyphicon-picture"></span>
                 Home</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-nav-demo">
@@ -94,39 +85,32 @@
 
     </div>
 </nav>
-
-
-<%--<div>--%>
-<%--<tiles:insertAttribute name="header"></tiles:insertAttribute>--%>
-<%--</div>--%>
-
-<%--<div>--%>
-<%--<tiles:insertAttribute name="footer"></tiles:insertAttribute>--%>
-<%--</div>--%>
-
-<%--<tiles:insertAttribute name="title"></tiles:insertAttribute>--%>
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
             <div class="content">
-                <h2>${message}</h2>
-
-
-                <hr>
+                <h1>Sign Up</h1>
 
 
                 <div>
 
-                    <form action="upload" method="post" enctype="multipart/form-data" class="form-inline">
+                    <form action="Up" method="POST" class="form-horizontal">
                         <div class="form-group">
-
-                            <input type="file" name="file"/>
+                            <div class="col-sm-4 col-sm-push-4">
+                                <input class="form-control" name="username" type="text" placeholder="username">
+                            </div>
                         </div>
                         <div class="form-group">
-
-                            <input class="btn btn-primary" type="submit" value="upload"/>
+                            <div class="col-sm-4 col-sm-push-4">
+                                <input class="form-control" name="password" type="password" placeholder="password">
+                            </div>
                         </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-push-4">
+                                <button class="btn btn-primary form-control">Submit</button>
+                            </div>
 
+                        </div>
                     </form>
                 </div>
 
@@ -135,11 +119,5 @@
     </div>
 </div>
 
-
 </body>
 </html>
-
-
-
-
-
