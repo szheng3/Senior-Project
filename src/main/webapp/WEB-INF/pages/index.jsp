@@ -69,7 +69,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="index.jsp" class="navbar-brand"><span class="glyphicon glyphicon-picture"></span> Home</a>
+            <a href="/SeniorProjectVersion2/" class="navbar-brand"><span class="glyphicon glyphicon-picture"></span>
+                Home</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-nav-demo">
             <ul class="navbar-nav navbar-right nav">
@@ -105,7 +106,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="content">
-                <h2>Machine Learning</h2>
+                <h2>${message}</h2>
 
 
                 <hr>
