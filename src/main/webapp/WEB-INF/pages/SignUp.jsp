@@ -38,7 +38,7 @@
         }
 
         .content {
-            padding-top: 25%;
+            padding-top: 10%;
             text-align: center;
             text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
             0px 8px 13px rgba(0, 0, 0, 0.1),
@@ -86,33 +86,38 @@
     </div>
 </nav>
 <div class="container">
-</div>
-
-
-<div class="container">
     <div class="row">
-        <div class="text-center">
-            <h1>Sign Up</h1>
-            <form action="Up" method="POST" class="form-horizontal">
-                <div class="form-group">
-                    <div class="col-sm-4 col-sm-push-4">
-                        <input class="form-control" name="username" type="text" placeholder="username">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 col-sm-push-4">
-                        <input class="form-control" name="password" type="password" placeholder="password">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 col-sm-push-4">
-                        <button class="btn btn-primary form-control">Submit</button>
-                    </div>
+        <div class="col-lg-12">
+            <div class="content">
+                <h1>Sign Up</h1>
 
+
+                <div>
+
+                    <form action="Up" method="POST" class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-push-4">
+                                <input class="form-control" name="username" type="text" placeholder="username">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-push-4">
+                                <input class="form-control" name="password" type="password" placeholder="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-push-4">
+                                <button class="btn btn-primary form-control">Submit</button>
+                            </div>
+
+                        </div>
+                    </form>
                 </div>
-            </form>
+
+            </div>
         </div>
     </div>
 </div>
+
 </body>
 </html>

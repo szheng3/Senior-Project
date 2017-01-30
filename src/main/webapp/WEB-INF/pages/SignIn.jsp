@@ -38,7 +38,7 @@
         }
 
         .content {
-            padding-top: 25%;
+            padding-top: 10%;
             text-align: center;
             text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
             0px 8px 13px rgba(0, 0, 0, 0.1),
