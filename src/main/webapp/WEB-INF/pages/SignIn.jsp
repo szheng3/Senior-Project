@@ -121,30 +121,5 @@
     </div>
 </div>
 
-<%--<div class="container">--%>
-<%--<div class="row">--%>
-<%--<div class="text-center">--%>
-<%--<h1>Sign In</h1>--%>
-<%--<form action="Register" method="POST" class="form-horizontal">--%>
-<%--<div class="form-group">--%>
-<%--<div class="col-sm-4 col-sm-push-4">--%>
-<%--<input class="form-control" name="username" type="text" placeholder="username">--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<div class="form-group">--%>
-<%--<div class="col-sm-4 col-sm-push-4">--%>
-<%--<input class="form-control" name="password" type="password" placeholder="password">--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<div class="form-group">--%>
-<%--<div class="col-sm-4 col-sm-push-4">--%>
-<%--<button class="btn btn-primary form-control">Submit</button>--%>
-<%--</div>--%>
-
-<%--</div>--%>
-<%--</form>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
 </body>
 </html>
