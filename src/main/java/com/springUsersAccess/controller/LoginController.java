@@ -1,4 +1,4 @@
-package com.jcg.examples.controller;
+package com.springUsersAccess.controller;
 
 /**
  * Created by Alex Almanza on 1/31/17.
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.jcg.examples.delegate.LoginDelegate;
-import com.jcg.examples.viewBean.LoginBean;
+import com.springUsersAccess.delegate.LoginDelegate;
+import com.springUsersAccess.viewBean.LoginBean;
 
 
 @Controller
@@ -63,7 +63,7 @@ public class LoginController {
             @ModelAttribute("loginBean") LoginBean loginBean) {
         ModelAndView model = null;
         try {
-            boolean isValidUser = loginDelegate.isValidUser(loginBean.getUsername(), loginBean.getPassword());
+            boolean isValidUser = loginDelegate.isAuthenticUser(loginBean.getUsername(), loginBean.getPassword());
             if (isValidUser) {
                 System.out.println("User Login Successful");
                 request.setAttribute("loggedInUser", loginBean.getUsername());

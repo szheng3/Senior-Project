@@ -1,4 +1,4 @@
-package com.jcg.examples.dao.impl;
+package com.springUsersAccess.dao.impl;
 
 /**
  * Created by Alex Almanza on 1/31/17.
@@ -9,13 +9,10 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import com.jcg.examples.dao.UserDao;
+import com.springUsersAccess.dao.UserDao;
 
-/**
- * @author CENTAUR
- *
- */
-public class UserDaoImpl implements UserDao {
+
+public class UserDaoSQL implements UserDao {
     DataSource dataSource ;
 
     public DataSource getDataSource() {
@@ -27,7 +24,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean isValidUser(String username, String password) throws SQLException {
+    public boolean isStoredUser(String username, String password) throws SQLException {
         String query = "Select count(1) from main.user where username = ? and password = ?";
         PreparedStatement pstmt = dataSource.getConnection().prepareStatement(query);
         pstmt.setString(1, username);

@@ -1,11 +1,11 @@
-package com.jcg.examples.delegate;
+package com.springUsersAccess.delegate;
 
 /**
  * Created by Alex Almanza on 1/31/17.
  */
 import java.sql.SQLException;
 
-import com.jcg.examples.service.UserService;
+import com.springUsersAccess.service.UserService;
 
 /**
  * A 'buisness delagate' encapsulating the 'application services' needed for user authentication.
@@ -25,7 +25,7 @@ public class LoginDelegate {
         this.userService = userService;
     }
 
-    public boolean isValidUser(String username, String password) throws SQLException {
+    public boolean isAuthenticUser(String username, String password) throws SQLException {
         return userService.isValidUser(username, password);
     }
 

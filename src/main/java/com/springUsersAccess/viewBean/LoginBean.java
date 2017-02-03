@@ -1,4 +1,4 @@
-package com.jcg.examples.viewBean;
+package com.springUsersAccess.viewBean;
 
 /**
  * Created by Alex Almanza on 1/31/17.

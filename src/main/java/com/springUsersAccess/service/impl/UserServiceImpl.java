@@ -1,16 +1,16 @@
-package com.jcg.examples.service.impl;
+package com.springUsersAccess.service.impl;
 
 /**
  * Created by Alex Almanza on 1/31/17.
  */
 import java.sql.SQLException;
 
-import com.jcg.examples.dao.UserDao;
-import com.jcg.examples.service.UserService;
+import com.springUsersAccess.dao.UserDao;
+import com.springUsersAccess.service.UserService;
 
 /**
  * A class that uses the UserService interface to authenticate users. Authentication is performed by
- * UserDAO, but this service encapsulates the DAO to prevent unwanted altertions.
+ * UserDAO, but this service encapsulates the DAO to prevent unwanted alterations.
  */
 public class UserServiceImpl implements UserService {
 
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean isValidUser(String username, String password) throws SQLException {
-        return userDao.isValidUser(username, password);
+        return userDao.isStoredUser(username, password);
     }
 
 }

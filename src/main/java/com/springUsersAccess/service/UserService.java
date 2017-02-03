@@ -1,4 +1,4 @@
-package com.jcg.examples.service;
+package com.springUsersAccess.service;
 
 /**
  * Created by Alex Almanza on 1/31/17.

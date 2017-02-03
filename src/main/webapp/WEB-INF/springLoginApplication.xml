@@ -12,15 +12,15 @@
     But here the specific implementations for those objects are defined.
     -->
 
-    <bean id="loginDelegate" class="com.jcg.examples.delegate.LoginDelegate">
+    <bean id="loginDelegate" class="com.springUsersAccess.delegate.LoginDelegate">
         <property name="userService" ref="userService"/>
     </bean>
 
-    <bean id="userService" class="com.jcg.examples.service.impl.UserServiceImpl">
+    <bean id="userService" class="com.springUsersAccess.service.impl.UserServiceImpl">
         <property name="userDao" ref="userDao" />
     </bean>
 
-    <bean name="userDao" class="com.jcg.examples.dao.impl.UserDaoImpl">
+    <bean name="userDao" class="com.springUsersAccess.dao.impl.UserDaoSQL">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
