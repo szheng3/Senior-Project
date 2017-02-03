@@ -13,7 +13,7 @@ public class SignUpInController {
     @RequestMapping("/SignIn")
     public String SignInMVC(ModelMap model) {
         model.addAttribute("message", "Machine Learning");
-        return "SignIn";
+        return "user_access/SignIn";
     }
 
     @RequestMapping("/SignUp")

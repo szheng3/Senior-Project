@@ -4,6 +4,7 @@
   Time: 11:29 PM
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="include.jsp"%>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -72,15 +73,9 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-nav-demo">
             <ul class="navbar-nav navbar-right nav">
-
-
                 <li><a href="SignIn">Log In</a></li>
                 <li><a href="SignUp">Sign Up</a></li>
-
-
             </ul>
-
-
         </div>
 
     </div>
@@ -92,29 +87,44 @@
         <div class="col-lg-12">
             <div class="content">
                 <h1>Sign In</h1>
+                <%--<div>--%>
+                    <%--<form action="Register" method="POST" class="form-horizontal">--%>
 
+                        <%--<div class="form-group">--%>
+                            <%--<div class="col-sm-4 col-sm-push-4">--%>
+                                <%--<input class="form-control" name="username" type="text" placeholder="username">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="form-group">--%>
+                            <%--<div class="col-sm-4 col-sm-push-4">--%>
+                                <%--<input class="form-control" name="password" type="password" placeholder="password">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="form-group">--%>
+                            <%--<div class="col-sm-4 col-sm-push-4">--%>
+                                <%--<button class="btn btn-primary form-control">Submit</button>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</form>--%>
+                <%--</div>--%>
 
-                <div>
-
-                    <form action="Register" method="POST" class="form-horizontal">
-                        <div class="form-group">
-                            <div class="col-sm-4 col-sm-push-4">
-                                <input class="form-control" name="username" type="text" placeholder="username">
-                            </div>
+                <form:form id="loginForm" method="post" action="login" modelAttribute="loginBean" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-push-4">
+                            <form:input id="username" name="username" path="username" class="form-control" type="text" placeholder="username" />
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-4 col-sm-push-4">
-                                <input class="form-control" name="password" type="password" placeholder="password">
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-push-4">
+                            <form:input id="password" name="password" path="password" class="form-control" type="password" placeholder="password"/>
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-4 col-sm-push-4">
-                                <button class="btn btn-primary form-control">Submit</button>
-                            </div>
-
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-push-4">
+                            <button class="btn btn-primary form-control">Submit</button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form:form>
 
             </div>
         </div>
