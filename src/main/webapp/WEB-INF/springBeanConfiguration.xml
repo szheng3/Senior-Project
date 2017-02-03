@@ -8,8 +8,8 @@
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <!--
-    In the classes, objects are declared using interfaces. But here the specific implementations for those objects are
-    defined.
+    In the classes, objects are declared using interfaces.
+    But here the specific implementations for those objects are defined.
     -->
 
     <bean id="loginDelegate" class="com.jcg.examples.delegate.LoginDelegate">
