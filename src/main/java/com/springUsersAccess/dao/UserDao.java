@@ -8,6 +8,9 @@ import java.sql.SQLException;
  * operations on the database
  */
 public interface UserDao {
-    public boolean isStoredUser(String username, String password) throws SQLException;
-
+    boolean isUsernameTaken(String username) throws SQLException;
+    boolean isValidUser(String username, String password) throws SQLException;
+    void addUser(String username, String password) throws SQLException;
+    String getSalt(String username) throws SQLException;
+    String changePassword(String username, String password_current, String password_new) throws SQLException;
 }

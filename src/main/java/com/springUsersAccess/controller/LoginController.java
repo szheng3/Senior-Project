@@ -63,7 +63,7 @@ public class LoginController {
             @ModelAttribute("loginBean") LoginBean loginBean) {
         ModelAndView model = null;
         try {
-            boolean isValidUser = loginDelegate.isAuthenticUser(loginBean.getUsername(), loginBean.getPassword());
+            boolean isValidUser = loginDelegate.isValidUser(loginBean.getUsername(), loginBean.getPassword());
             if (isValidUser) {
                 System.out.println("User Login Successful");
                 request.setAttribute("loggedInUser", loginBean.getUsername());

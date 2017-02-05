@@ -14,6 +14,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <import resource="springLoginApplication.xml"/>
+    <import resource="loginapp-config.xml"/>
+    <import resource="signupapp-config.xml" />
 
 </beans>

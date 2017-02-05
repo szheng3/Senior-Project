@@ -1,11 +1,9 @@
 package com.springUsersAccess.viewBean;
 
 /**
- *
- * Created by Alex Almanza on 1/31/17.
- * This class serves as a means of transferring the information seen by the user and underlying program
+ * Created by Alex Almanza on 2/5/17.
  */
-public class LoginBean {
+public class SignupBean {
     private String username;
     private String password;
 

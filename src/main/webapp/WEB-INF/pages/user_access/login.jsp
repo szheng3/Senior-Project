@@ -87,27 +87,6 @@
         <div class="col-lg-12">
             <div class="content">
                 <h1>Sign In</h1>
-                <%--<div>--%>
-                    <%--<form action="Register" method="POST" class="form-horizontal">--%>
-
-                        <%--<div class="form-group">--%>
-                            <%--<div class="col-sm-4 col-sm-push-4">--%>
-                                <%--<input class="form-control" name="username" type="text" placeholder="username">--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                        <%--<div class="form-group">--%>
-                            <%--<div class="col-sm-4 col-sm-push-4">--%>
-                                <%--<input class="form-control" name="password" type="password" placeholder="password">--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                        <%--<div class="form-group">--%>
-                            <%--<div class="col-sm-4 col-sm-push-4">--%>
-                                <%--<button class="btn btn-primary form-control">Submit</button>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                    <%--</form>--%>
-                <%--</div>--%>
-
                 <form:form id="loginForm" method="post" action="login" modelAttribute="loginBean" class="form-horizontal">
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-push-4">
@@ -125,7 +104,6 @@
                         </div>
                     </div>
                 </form:form>
-
             </div>
         </div>
     </div>

@@ -1,32 +1,31 @@
 package com.springUsersAccess.delegate;
 
-/**
- * Created by Alex Almanza on 1/31/17.
- */
 import java.sql.SQLException;
 
-import com.springUsersAccess.service.UserService;
+import com.springUsersAccess.service.AuthenticationService;
 
 /**
- * A 'buisness delagate' encapsulating the 'application services' needed for user authentication.
+ * Created by Alex Almanza on 1/31/17.
+ *
+ * A 'business delegate' encapsulating the 'application services' needed for user authentication.
  *
  * http://corej2eepatterns.com/Patterns2ndEd/BusinessDelegate.htm
  * http://corej2eepatterns.com/Patterns2ndEd/ApplicationService.htm
  * http://stackoverflow.com/questions/14405919/business-delegate-vs-service-locator
  */
 public class LoginDelegate {
-    private UserService userService;
+    private AuthenticationService authenticationService;
 
-    public UserService getUserService() {
-        return this.userService;
+    public AuthenticationService getAuthenticationService() {
+        return this.authenticationService;
     }
 
-    public void setUserService(UserService userService) {
-        this.userService = userService;
+    public void setAuthenticationService(AuthenticationService authenticationService) {
+        this.authenticationService = authenticationService;
     }
 
-    public boolean isAuthenticUser(String username, String password) throws SQLException {
-        return userService.isValidUser(username, password);
+    public boolean isValidUser(String username, String password) throws SQLException {
+        return authenticationService.isValidUser(username, password);
     }
 
 }
