@@ -68,13 +68,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="/SeniorProjectVersion2/" class="navbar-brand"><span class="glyphicon glyphicon-picture"></span>
+            <a href="${pageContext.request.contextPath}/" class="navbar-brand"><span class="glyphicon glyphicon-picture"></span>
                 Home</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-nav-demo">
             <ul class="navbar-nav navbar-right nav">
-                <li><a href="SignIn">Log In</a></li>
-                <li><a href="SignUp">Sign Up</a></li>
+                <li><a href="${pageContext.request.contextPath}/login">Log In</a></li>
+                <li><a href="${pageContext.request.contextPath}/signup">Sign Up</a></li>
             </ul>
         </div>
 
