@@ -73,7 +73,7 @@ public class LoginController {
                 System.out.println("User Login Unsuccessful");
                 model = new ModelAndView("login");
                 model.addObject("loginBean", loginBean);
-                request.setAttribute("message", "Invalid credentials!!");
+                request.setAttribute("message", "*Username or password is invalid");
             }
 
         } catch (Exception e) {

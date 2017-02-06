@@ -1,5 +1,5 @@
 <%--
-  Author: Shuai Zheng
+  Author: Shuai Zheng, Alex Almanza
   Date: 1/29/17
   Time: 11:29 PM
 --%>
@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>File Upload Example in JSP and Servlet - Java web application</title>
+    <title>Login Portal</title>
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css"
@@ -101,6 +101,7 @@
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-push-4">
                             <button class="btn btn-primary form-control">Submit</button>
+                            <p style="color: #ff1700">${message}</p>
                         </div>
                     </div>
                 </form:form>

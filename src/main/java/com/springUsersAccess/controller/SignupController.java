@@ -44,12 +44,12 @@ public class SignupController {
         ModelAndView model = null;
         try {
             if (!signupDelegate.isUsernameAllowed(signupBean.getUsername())) {
-                request.setAttribute("username_msg", "Username is already taken");
+                request.setAttribute("username_msg", "*Username is already taken");
                 // Take the user back to the signup screen
                 model = new ModelAndView("signup");
             }
             else if (!signupDelegate.isPasswordAllowed(signupBean.getPassword())) {
-                request.setAttribute("password_msg", "Password is too weak");
+                request.setAttribute("password_msg", "*Password is too weak");
                 // Take the user back to the signup screen
                 model = new ModelAndView("signup");
             }
