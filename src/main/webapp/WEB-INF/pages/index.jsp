@@ -83,7 +83,7 @@
             <ul class="navbar-nav navbar-right nav">
                 <li><a href="${pageContext.request.contextPath}/login">Log In</a></li>
                 <!-- TODO: create signup mechanism -->
-                <li><a href="SignUp">Sign Up</a></li>
+                <li><a href="${pageContext.request.contextPath}/signup">Sign Up</a></li>
             </ul>
         </div>
     </div>

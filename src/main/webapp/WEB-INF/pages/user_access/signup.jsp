@@ -75,8 +75,8 @@
             <ul class="navbar-nav navbar-right nav">
 
 
-                <li><a href="SignIn">Log In</a></li>
-                <li><a href="SignUp">Sign Up</a></li>
+                <li><a href="${pageContext.request.contextPath}/login">Log In</a></li>
+                <li><a href="${pageContext.request.contextPath}/signup">Sign Up</a></li>
 
 
             </ul>
@@ -90,7 +90,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="content">
-                <h1>Sign In</h1>
+                <h1>Sign Up</h1>
                 <h3>${username_msg}</h3>
                 <h3>${password_msg}</h3>
                 <form:form id="signupForm" method="post" action="signup" modelAttribute="signupBean" class="form-horizontal">
