@@ -31,7 +31,8 @@ public class SignupDelegate {
     }
 
     public boolean isUsernameAllowed(String username) throws SQLException {
-        return this.usernameService.usernameIsTaken(username);
+        // User name is allowed if not taken
+        return !this.usernameService.usernameIsTaken(username);
     }
 
     public void createUser(String username, String password) throws SQLException {
