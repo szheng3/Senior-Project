@@ -1,19 +1,14 @@
 <%--
-  Author: Shuai Zheng
-  Date: 11/9/16
-  Time: 2:44 PM
+  Author: Shuai Zheng, Alex Almanza
+  Date: 1/29/17
+  Time: 11:29 PM
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>--%>
-<%--<tiles:insertDefinition name="home"/>--%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="include.jsp"%>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>File Upload Example in JSP and Servlet - Java web application</title>
+    <title>Login Portal</title>
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css"
@@ -44,7 +39,7 @@
         }
 
         .content {
-            padding-top: 25%;
+            padding-top: 10%;
             text-align: center;
             text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
             0px 8px 13px rgba(0, 0, 0, 0.1),
@@ -62,9 +57,6 @@
 
 <body>
 
-<%--<jsp:include page="hello.jsp"></jsp:include>--%>
-
-<%--<%@ include file="hello.jsp" %>--%>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -76,64 +68,47 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="" class="navbar-brand"><span class="glyphicon glyphicon-picture"></span>
+            <a href="${pageContext.request.contextPath}/" class="navbar-brand"><span class="glyphicon glyphicon-picture"></span>
                 Home</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-nav-demo">
             <ul class="navbar-nav navbar-right nav">
                 <li><a href="${pageContext.request.contextPath}/login">Log In</a></li>
-                <!-- TODO: create signup mechanism -->
                 <li><a href="${pageContext.request.contextPath}/signup">Sign Up</a></li>
             </ul>
         </div>
+
     </div>
 </nav>
 
 
-<%--<div>--%>
-<%--<tiles:insertAttribute name="header"></tiles:insertAttribute>--%>
-<%--</div>--%>
-
-<%--<div>--%>
-<%--<tiles:insertAttribute name="footer"></tiles:insertAttribute>--%>
-<%--</div>--%>
-
-<%--<tiles:insertAttribute name="title"></tiles:insertAttribute>--%>
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
             <div class="content">
-                <h2>${message}</h2>
-
-
-                <hr>
-
-
-                <div>
-
-                    <form action="upload" method="post" enctype="multipart/form-data" class="form-inline">
-                        <div class="form-group">
-
-                            <input type="file" name="file"/>
+                <h1>Sign In</h1>
+                <form:form id="loginForm" method="post" action="login" modelAttribute="loginBean" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-push-4">
+                            <form:input id="username" name="username" path="username" class="form-control" type="text" placeholder="username" />
                         </div>
-                        <div class="form-group">
-
-                            <input class="btn btn-primary" type="submit" value="upload"/>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-push-4">
+                            <form:input id="password" name="password" path="password" class="form-control" type="password" placeholder="password"/>
                         </div>
-
-                    </form>
-                </div>
-
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-push-4">
+                            <button class="btn btn-primary form-control">Submit</button>
+                            <p style="color: #ff1700">${message}</p>
+                        </div>
+                    </div>
+                </form:form>
             </div>
         </div>
     </div>
 </div>
 
-
 </body>
 </html>
-
-
-
-
-
