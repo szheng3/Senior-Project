@@ -18,6 +18,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
+import static com.springTeam55UCI.mvc.com.util.CheckTable.CheckTable;
+import static com.springTeam55UCI.mvc.com.util.WriteBlob.writeBlob;
+
 /**
  * Created by Shuai Zheng on 11/23/16.
  */
@@ -53,11 +56,17 @@ public class FileUploadHandler extends HttpServlet {
                         input[1] = request.getSession().getServletContext().getRealPath("");
 
                         new Hw5Johnsons().main(input);
+
+                        String outputaddr = request.getSession().getServletContext().getRealPath("") + File.separator + "output.txt";
+                        //System.out.println(outputaddr);
+
                         Connection connection = null;
                         try {
                             connection = ConnectionConfig.getConnection();
                             if(connection != null) {
                                 System.out.println("Connection established.");
+                                CheckTable(connection);
+                                writeBlob(connection, outputaddr);
                             }
                             else {
                                 System.out.println("Connection failed.");

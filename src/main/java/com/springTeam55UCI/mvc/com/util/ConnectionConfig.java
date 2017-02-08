@@ -20,7 +20,7 @@ public class ConnectionConfig {
             e.printStackTrace();
         }
 
-        System.out.println(connection==null);
+        //System.out.println(connection==null);
         return connection;
     }
 }
