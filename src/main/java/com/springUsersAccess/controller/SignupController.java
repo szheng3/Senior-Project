@@ -1,5 +1,6 @@
 package com.springUsersAccess.controller;
 
+import com.springUsersAccess.delegate.HashPassDelegate;
 import com.springUsersAccess.delegate.SignupDelegate;
 import com.springUsersAccess.viewBean.LoginBean;
 import com.springUsersAccess.viewBean.SignupBean;
@@ -21,10 +22,12 @@ import java.sql.SQLException;
 @Controller
 public class SignupController {
     private final SignupDelegate signupDelegate;
+    private final HashPassDelegate hashPassDelegate;
 
     @Autowired
-    public SignupController(SignupDelegate signupDelegate) {
+    public SignupController(SignupDelegate signupDelegate, HashPassDelegate hashPassDelegate) {
         this.signupDelegate = signupDelegate;
+        this.hashPassDelegate = hashPassDelegate;
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
@@ -55,6 +58,11 @@ public class SignupController {
             }
             else {
                 // TODO give the user input that they have made their account
+
+                // TODO Store Hashed account info into DB
+
+
+
 
                 signupDelegate.createUser(signupBean.getUsername(), signupBean.getPassword());
 
