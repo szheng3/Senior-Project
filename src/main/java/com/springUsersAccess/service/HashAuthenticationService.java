@@ -10,6 +10,6 @@ import java.sql.SQLException;
 public interface HashAuthenticationService extends AuthenticationService {
     String getHashedPassword(String username) throws SQLException;
     String createHashedPassword(String username, String password);
-    String makeSalt();
+    byte[] makeSalt();
     boolean isValidUser(String username, String password) throws SQLException;
 }
