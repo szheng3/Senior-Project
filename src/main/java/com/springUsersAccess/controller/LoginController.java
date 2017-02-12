@@ -18,6 +18,7 @@ import com.springUsersAccess.viewBean.LoginBean;
 
 
 @Controller
+@RequestMapping(value = "/login")
 public class LoginController {
     private final LoginDelegate loginDelegate;
 
@@ -33,7 +34,8 @@ public class LoginController {
      * @param response
      * @return
      */
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView displayLogin(HttpServletRequest request, HttpServletResponse response) {
 
         // Creates a ModelAndView object with a view of 'login'
@@ -56,26 +58,29 @@ public class LoginController {
      * @param loginBean
      * @return
      */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView executeLogin(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            @ModelAttribute("loginBean") LoginBean loginBean) {
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ModelAndView executeLogin(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("loginBean") LoginBean loginBean) {
+
+        // ModelAndView object will be defined to according to the validity of the provided credentials
         ModelAndView model = null;
+
         try {
+            // Check if the user provided the proper credentials
             boolean isValidUser = loginDelegate.isValidUser(loginBean.getUsername(), loginBean.getPassword());
+
+            // Defines the model object that will take the user to the proper page
             if (isValidUser) {
                 System.out.println("User Login Successful");
-                request.setAttribute("loggedInUser", loginBean.getUsername());
                 model = new ModelAndView("welcome");
+                request.setAttribute("loggedInUser", loginBean.getUsername());
             }
             else {
                 System.out.println("User Login Unsuccessful");
                 model = new ModelAndView("login");
                 model.addObject("loginBean", loginBean);
-                request.setAttribute("message", "*Username or password is invalid");
+                request.setAttribute("message", "*  Username or password is invalid");
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
