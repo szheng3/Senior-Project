@@ -31,6 +31,7 @@ public class UserDaoSQLite implements UserDao {
              if (resultSet.next())
                  return (resultSet.getInt(1) > 0);
              else
+                 // TODO: decide if an exception should be thrown when there is no result set available
                  return false;
          }
     }
@@ -46,6 +47,7 @@ public class UserDaoSQLite implements UserDao {
             if (resultSet.next())
                 return (resultSet.getInt(1) > 0);
             else
+                // TODO: decide if an exception should be thrown when there is no result set available
                 return false;
         }
     }
