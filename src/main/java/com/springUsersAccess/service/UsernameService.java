@@ -8,4 +8,5 @@ import java.sql.SQLException;
 public interface UsernameService {
     boolean usernameIsTaken(String username) throws SQLException;
     String suggestUsername(String[] words);
+    boolean checkFormat(String username);
 }

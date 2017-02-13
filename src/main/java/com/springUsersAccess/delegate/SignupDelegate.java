@@ -30,9 +30,16 @@ public class SignupDelegate {
         return passwordService.passwordIsStrong(password);
     }
 
+    // TODO: Convey why the username is not allowed, which rule was broken
     public boolean isUsernameAllowed(String username) throws SQLException {
-        // User name is allowed if not taken
-        return !this.usernameService.usernameIsTaken(username);
+        // Check if the password has the proper format
+        if (usernameService.checkFormat(username)) {
+            // Format was OK, allow the username if not already taken
+            return !usernameService.usernameIsTaken(username);
+        }
+        else {
+            return false;
+        }
     }
 
     public void createUser(String username, String password) throws SQLException {
