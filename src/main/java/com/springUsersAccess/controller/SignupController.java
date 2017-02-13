@@ -19,6 +19,7 @@ import java.sql.SQLException;
  */
 
 @Controller
+@RequestMapping(value = "/signup")
 public class SignupController {
     private final SignupDelegate signupDelegate;
 
@@ -27,7 +28,7 @@ public class SignupController {
         this.signupDelegate = signupDelegate;
     }
 
-    @RequestMapping(value = "/signup", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView displaySignup(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView model = new ModelAndView("signup");
         SignupBean signupBean = new SignupBean();
@@ -35,23 +36,20 @@ public class SignupController {
         return model;
     }
 
-    @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public ModelAndView executeSignup(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            @ModelAttribute("signupBean") SignupBean signupBean) {
+    @RequestMapping(method = RequestMethod.POST)
+    public ModelAndView executeSignup(@ModelAttribute("signupBean") SignupBean signupBean) {
         // TODO: find out if returning a null model is an acceptable practice
         ModelAndView model = null;
         try {
             if (!signupDelegate.isUsernameAllowed(signupBean.getUsername())) {
-                request.setAttribute("username_msg", "*Username is already taken");
                 // Take the user back to the signup screen
                 model = new ModelAndView("signup");
+                model.addObject("username_msg", "*Username is already taken");
             }
             else if (!signupDelegate.isPasswordAllowed(signupBean.getPassword())) {
-                request.setAttribute("password_msg", "*Password is too weak");
                 // Take the user back to the signup screen
                 model = new ModelAndView("signup");
+                model.addObject("password_msg", "*Password is too weak");
             }
             else {
                 // TODO give the user input that they have made their account
@@ -59,7 +57,7 @@ public class SignupController {
                 signupDelegate.createUser(signupBean.getUsername(), signupBean.getPassword());
 
                 // Create a model object to take the user to the login screen
-                model = new ModelAndView("login");
+                model = new ModelAndView("redirect:/login");
 
                 // Create a login bean based on input to used to make the new user
                 LoginBean loginBean = new LoginBean();
@@ -67,13 +65,13 @@ public class SignupController {
                 loginBean.setPassword(signupBean.getPassword());
 
                 model.addObject("loginBean", loginBean);
-                request.setAttribute("message",
-                        "An account for " + signupBean.getUsername() + " was successfully created!\n"
-                        + "You are now signed in.");
+                model.addObject("message",
+                                String.format("An account for %s was successfully created!", signupBean.getUsername()));
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
+            model = new ModelAndView("error");
+            model.addObject("error_message", "Database error");
         }
 
         return model;

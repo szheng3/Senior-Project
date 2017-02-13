@@ -1,15 +1,16 @@
 <%--
-  Author: Shuai Zheng, Alex Almanza
-  Date: 1/29/17
-  Time: 11:29 PM
+  Created by IntelliJ IDEA.
+  User: zxz
+  Date: 2/13/17
+  Time: 9:36 AM
+  To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="include.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>New User Signup</title>
+    <title>Login Portal</title>
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css"
@@ -78,33 +79,17 @@
                 <li><a href="${pageContext.request.contextPath}/signup">Sign Up</a></li>
             </ul>
         </div>
+
     </div>
 </nav>
+
 
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
             <div class="content">
-                <h1>Sign Up</h1>
-                <form:form id="signupForm" method="post" action="signup" modelAttribute="signupBean" class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-sm-4 col-sm-push-4">
-                            <form:input id="username" name="username" path="username" class="form-control" type="text" placeholder="username" />
-                            <p style="color: #ff1700"><c:out value="${username_msg}"/></p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-4 col-sm-push-4">
-                            <form:input id="password" name="password" path="password" class="form-control" type="password" placeholder="password"/>
-                            <p style="color: #ff1700"><c:out value="${password_msg}"/></p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-4 col-sm-push-4">
-                            <button class="btn btn-primary form-control">Submit</button>
-                        </div>
-                    </div>
-                </form:form>
+                <h1>Whoops!</h1>
+                <p>An error occurred: <c:out value="${error_message}"/></p>
             </div>
         </div>
     </div>

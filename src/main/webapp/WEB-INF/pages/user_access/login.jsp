@@ -5,6 +5,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="include.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -101,7 +102,7 @@
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-push-4">
                             <button class="btn btn-primary form-control">Submit</button>
-                            <p style="color: #ff1700">${message}</p>
+                            <p style="color: #ff1700"><c:out value="${message}"/></p>
                         </div>
                     </div>
                 </form:form>
