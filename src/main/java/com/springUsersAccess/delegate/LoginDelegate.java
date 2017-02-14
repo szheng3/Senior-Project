@@ -14,15 +14,12 @@ import com.springUsersAccess.service.AuthenticationService;
  * http://stackoverflow.com/questions/14405919/business-delegate-vs-service-locator
  */
 public class LoginDelegate {
+    // Deceleration of services used, exact implementations are defined as spring beans in loginapp-config.xml
     private AuthenticationService authenticationService;
-
-    public AuthenticationService getAuthenticationService() {
-        return this.authenticationService;
-    }
-
     public void setAuthenticationService(AuthenticationService authenticationService) {
         this.authenticationService = authenticationService;
     }
+    // end of service decelerations
 
     public boolean isValidUser(String username, String password) throws SQLException {
         return authenticationService.isValidUser(username, password);

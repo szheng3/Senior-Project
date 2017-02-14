@@ -10,21 +10,23 @@ import java.sql.SQLException;
  * Created by Alex Almanza on 2/4/17.
  */
 public class SignupDelegate {
+    // Deceleration of services to be used, exact implementations are defined as spring beans in signupapp-config.xml
     private NewUserService newUserService;
-    private PasswordService passwordService;
-    private UsernameService usernameService;
-
-
-
     public void setNewUserService(NewUserService newUserService) {
         this.newUserService = newUserService;
     }
+
+    private PasswordService passwordService;
     public void setPasswordService(PasswordService passwordService) {
         this.passwordService = passwordService;
     }
+
+    private UsernameService usernameService;
     public void setUsernameService(UsernameService usernameService) {
         this.usernameService = usernameService;
     }
+    // end of service decelerations
+
 
     public boolean isPasswordAllowed(String password) throws SQLException {
         return passwordService.passwordIsStrong(password);
