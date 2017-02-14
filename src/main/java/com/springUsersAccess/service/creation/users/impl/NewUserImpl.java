@@ -1,20 +1,15 @@
-package com.springUsersAccess.service.impl;
+package com.springUsersAccess.service.creation.users.impl;
 
 import com.springUsersAccess.dao.UserDao;
-import com.springUsersAccess.service.NewUserService;
+import com.springUsersAccess.service.creation.users.NewUserService;
 
 import java.sql.SQLException;
 
 /**
  * Created by Alex Almanza on 2/4/17.
  */
-public class NewUserImpl implements NewUserService{
+public class NewUserImpl implements NewUserService {
     private UserDao userDao;
-
-    public UserDao getUserDao() {
-        return this.userDao;
-    }
-
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }

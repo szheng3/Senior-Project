@@ -1,8 +1,8 @@
-package com.springUsersAccess.service.impl;
+package com.springUsersAccess.service.authentication.impl;
 
 import com.springUsersAccess.dao.UserDao;
 import com.springUsersAccess.delegate.HashPassDelegate;
-import com.springUsersAccess.service.AuthenticationService;
+import com.springUsersAccess.service.authentication.AuthenticationService;
 
 import java.sql.SQLException;
 

@@ -2,7 +2,7 @@ package com.springUsersAccess.delegate;
 
 import java.sql.SQLException;
 
-import com.springUsersAccess.service.AuthenticationService;
+import com.springUsersAccess.service.authentication.AuthenticationService;
 
 /**
  * Created by Alex Almanza on 1/31/17.

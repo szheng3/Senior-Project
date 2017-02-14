@@ -1,6 +1,6 @@
 package com.springUsersAccess.delegate;
 
-import com.springUsersAccess.service.HashAuthenticationService;
+import com.springUsersAccess.service.authentication.impl.hashed.HashAuthenticationService;
 
 /**
  * Created by Alex Almanza on 2/4/17.

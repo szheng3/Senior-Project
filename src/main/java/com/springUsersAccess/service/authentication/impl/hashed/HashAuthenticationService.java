@@ -1,4 +1,6 @@
-package com.springUsersAccess.service;
+package com.springUsersAccess.service.authentication.impl.hashed;
+
+import com.springUsersAccess.service.authentication.AuthenticationService;
 
 import java.sql.SQLException;
 

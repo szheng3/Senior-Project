@@ -1,6 +1,6 @@
-package com.springUsersAccess.service.impl;
+package com.springUsersAccess.service.authentication.impl.hashed.impl;
 
-import com.springUsersAccess.service.HashAuthenticationService;
+import com.springUsersAccess.service.authentication.impl.hashed.HashAuthenticationService;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;

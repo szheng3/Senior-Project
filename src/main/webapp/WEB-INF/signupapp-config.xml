@@ -10,18 +10,18 @@
     <!-- defines what service implementation to use for signup -->
     <bean id="signupDelegate" class="com.springUsersAccess.delegate.SignupDelegate">
         <property name="newUserService" ref="newUserService" />
-        <property name="passwordService" ref="passwordService" />
+        <property name="strengthService" ref="strengthService" />
         <property name="usernameService" ref="usernameService" />
     </bean>
 
-    <bean id="newUserService" class="com.springUsersAccess.service.impl.NewUserImpl" >
+    <bean id="newUserService" class="com.springUsersAccess.service.creation.users.impl.NewUserImpl" >
         <property name="userDao" ref="userDao" />
     </bean>
 
     <!-- TODO: implement using javascript instead of locally on server -->
-    <bean id="passwordService" class="com.springUsersAccess.service.impl.AllowAllPasswordsService">
+    <bean id="strengthService" class="com.springUsersAccess.service.creation.passwords.strength.impl.AllowAllPasswordsService">
     </bean>
-    <bean id="usernameService" class="com.springUsersAccess.service.impl.NoDuplicateUsernameService">
+    <bean id="usernameService" class="com.springUsersAccess.service.creation.usernames.impl.NoDuplicateUsernameService">
         <property name="userDao" ref="userDao" />
     </bean>
 

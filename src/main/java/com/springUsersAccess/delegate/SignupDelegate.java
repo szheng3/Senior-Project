@@ -1,8 +1,8 @@
 package com.springUsersAccess.delegate;
 
-import com.springUsersAccess.service.NewUserService;
-import com.springUsersAccess.service.PasswordService;
-import com.springUsersAccess.service.UsernameService;
+import com.springUsersAccess.service.creation.passwords.strength.StrengthService;
+import com.springUsersAccess.service.creation.users.NewUserService;
+import com.springUsersAccess.service.creation.usernames.UsernameService;
 
 import java.sql.SQLException;
 
@@ -16,9 +16,9 @@ public class SignupDelegate {
         this.newUserService = newUserService;
     }
 
-    private PasswordService passwordService;
-    public void setPasswordService(PasswordService passwordService) {
-        this.passwordService = passwordService;
+    private StrengthService strengthService;
+    public void setStrengthService(StrengthService strengthService) {
+        this.strengthService = strengthService;
     }
 
     private UsernameService usernameService;
@@ -29,7 +29,7 @@ public class SignupDelegate {
 
 
     public boolean isPasswordAllowed(String password) throws SQLException {
-        return passwordService.passwordIsStrong(password);
+        return strengthService.passwordIsStrong(password);
     }
 
     // TODO: Convey why the username is not allowed, which rule was broken

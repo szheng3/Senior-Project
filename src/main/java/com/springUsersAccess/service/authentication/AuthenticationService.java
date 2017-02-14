@@ -1,4 +1,4 @@
-package com.springUsersAccess.service;
+package com.springUsersAccess.service.authentication;
 
 /**
  * Created by Alex Almanza on 1/31/17.
