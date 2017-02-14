@@ -69,7 +69,7 @@ public class LoginController {
 
             // Defines the model object that will take the user to the proper page
             if (isValidUser) {
-                // TODO create service that acttualy signs in user, right now only credentials are checked
+                // TODO create service that actually signs in user, right now only credentials are checked
                 System.out.println("User Login Successful");
                 model = new ModelAndView("welcome");
                 // TODO create a new view class for a signed in user
