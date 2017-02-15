@@ -53,17 +53,12 @@ public class UserDaoSQLite implements UserDao {
     }
 
     @Override
-    public void addUser(String username, String password) throws SQLException{
-        // Only adds the new user if the user name isnt already taken
-        if (isUsernameTaken(username)) {
-            throw new IllegalArgumentException("A record for that username already exists: " + username);
-        }
-
-        try (Connection connection = dataSource.getConnection()) {
-            String query = "INSERT INTO user (username, password) VALUES (?, ?)";
-            PreparedStatement pstmt = connection.prepareStatement(query);
-            pstmt.setString(1, username);
-            pstmt.setString(2, password);
+    public void addPassword(String username, String password) throws SQLException{
+        String query = "UPDATE user SET password = ? WHERE username = ?";
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setString(1, password);
+            pstmt.setString(2, username);
             pstmt.executeUpdate();
         }
     }
