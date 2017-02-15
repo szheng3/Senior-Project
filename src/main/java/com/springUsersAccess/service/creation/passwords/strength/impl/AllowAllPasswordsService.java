@@ -7,7 +7,7 @@ import com.springUsersAccess.service.creation.passwords.strength.StrengthService
  */
 public class AllowAllPasswordsService implements StrengthService {
     @Override
-    public boolean passwordIsStrong(String password) {
+    public boolean checkStrength(String password) {
         return true;
     }
 }

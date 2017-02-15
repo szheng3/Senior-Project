@@ -23,16 +23,14 @@ import java.sql.SQLException;
 @RequestMapping(value = "/signup")
 public class SignupController {
     private final SignupDelegate signupDelegate;
-    private final HashPassDelegate hashPassDelegate;
 
     @Autowired
-    public SignupController(SignupDelegate signupDelegate, HashPassDelegate hashPassDelegate) {
+    public SignupController(SignupDelegate signupDelegate) {
         this.signupDelegate = signupDelegate;
-        this.hashPassDelegate = hashPassDelegate;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView displaySignup(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView displaySignup() {
         ModelAndView model = new ModelAndView("signup");
         SignupBean signupBean = new SignupBean();
         model.addObject("signupBean", signupBean);
@@ -58,10 +56,6 @@ public class SignupController {
                 // TODO give the user input that they have made their account
 
                 // TODO Store Hashed account info into DB
-
-
-
-
                 signupDelegate.createUser(signupBean.getUsername(), signupBean.getPassword());
 
                 // Create a model object to take the user to the login screen
