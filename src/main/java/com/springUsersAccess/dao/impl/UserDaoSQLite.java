@@ -86,6 +86,22 @@ public class UserDaoSQLite implements UserDao {
     }
 
     @Override
+    public void addUser(String username, byte[] salt) throws SQLException{
+        // Only adds the new user if the user name isnt already taken
+        if (isUsernameTaken(username)) {
+            throw new IllegalArgumentException("A record for that username already exists: " + username);
+        }
+
+        String query = "INSERT INTO user (username, salt) VALUES (?, ?)";
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setString(1, username);
+            pstmt.setBytes(2, salt);
+            pstmt.executeUpdate();
+        }
+    }
+
+    @Override
     public void updateSalt(String username, byte[] salt) throws SQLException {
         throw new UnsupportedOperationException("Cannot safely change salt yet. Need to be sure password is hased to the new salt.");
 //        String updateSQL = "UPDATE user "
@@ -113,10 +129,7 @@ public class UserDaoSQLite implements UserDao {
                 byte[] salt = resultSet.getBytes(1);
                 return salt;
             }
-            else {
-                // TODO: decide if an exception should be thrown when there is no result set available
-                return null;
-            }
+            throw new IllegalArgumentException("No salt has been given to this user: " + username);
         }
     }
 
