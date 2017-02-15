@@ -1,4 +1,4 @@
-package com.springUsersAccess.service.creation.passwords.hashed;
+package com.springUsersAccess.service.passwords.hash;
 
 /**
  * Created by Alex Almanza on 2/14/17.

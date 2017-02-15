@@ -1,9 +1,9 @@
-package com.springUsersAccess.service.authentication.impl;
+package com.springUsersAccess.service.users.authentication.impl;
 
 import java.sql.SQLException;
 
 import com.springUsersAccess.dao.UserDao;
-import com.springUsersAccess.service.authentication.AuthenticationService;
+import com.springUsersAccess.service.users.authentication.AuthenticationService;
 
 /**
  * Created by Alex Almanza on 1/31/17.

@@ -1,6 +1,6 @@
-package com.springUsersAccess.service.creation.salt.impl;
+package com.springUsersAccess.service.passwords.salt.impl;
 
-import com.springUsersAccess.service.creation.salt.SaltGenService;
+import com.springUsersAccess.service.passwords.salt.SaltGenService;
 
 import java.security.SecureRandom;
 import java.util.Random;

@@ -9,29 +9,29 @@
 
     <!-- defines what service implementation to use in signup -->
     <bean id="signupDelegate" class="com.springUsersAccess.delegate.SignupDelegate">
-        <property name="hashedUserGenService" ref="hashedUserGenService" />
+        <property name="newUserService" ref="newUserService" />
         <property name="saltGenService" ref="saltGenService"/>
         <property name="hashingService" ref="hashingService"/>
         <property name="strengthService" ref="strengthService" />
         <property name="usernameService" ref="usernameService" />
     </bean>
 
-    <bean id="hashedUserGenService" class="com.springUsersAccess.service.creation.users.impl.LeosImpl" >
+    <bean id="newUserService" class="com.springUsersAccess.service.users.creation.impl.LeosImpl" >
         <property name="userDao" ref="userDao" />
     </bean>
 
-    <bean id="saltGenService" class="com.springUsersAccess.service.creation.salt.impl.LeosImpl">
+    <bean id="saltGenService" class="com.springUsersAccess.service.passwords.salt.impl.LeosImpl">
     </bean>
 
-    <bean id="hashingService" class="com.springUsersAccess.service.creation.passwords.hashed.impl.LeosImpl">
+    <bean id="hashingService" class="com.springUsersAccess.service.passwords.hash.impl.LeosImpl">
     </bean>
 
     <!-- TODO: implement using javascript instead of locally on server -->
-    <bean id="strengthService" class="com.springUsersAccess.service.creation.passwords.strength.impl.AllowAllPasswordsService">
+    <bean id="strengthService" class="com.springUsersAccess.service.passwords.strength.impl.AllowAllPasswordsService">
     </bean>
 
 
-    <bean id="usernameService" class="com.springUsersAccess.service.creation.usernames.impl.NoDuplicateUsernameService">
+    <bean id="usernameService" class="com.springUsersAccess.service.usernames.impl.NoDuplicateUsernameService">
         <property name="userDao" ref="userDao" />
     </bean>
 

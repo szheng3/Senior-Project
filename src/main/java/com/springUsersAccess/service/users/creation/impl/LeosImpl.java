@@ -1,14 +1,14 @@
-package com.springUsersAccess.service.creation.users.impl;
+package com.springUsersAccess.service.users.creation.impl;
 
 import com.springUsersAccess.dao.UserDao;
-import com.springUsersAccess.service.creation.users.HashedUserGenService;
+import com.springUsersAccess.service.users.creation.NewUserService;
 
 import java.sql.SQLException;
 
 /**
  * Created by Alex Almanza on 2/14/17.
  */
-public class LeosImpl implements HashedUserGenService {
+public class LeosImpl implements NewUserService {
     private UserDao userDao;
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
@@ -16,6 +16,7 @@ public class LeosImpl implements HashedUserGenService {
 
     @Override
     public void createUser(String username, byte[] salt, String hashed_password) throws SQLException {
+        // TODO: figure out a better creation scheme
         if (userDao.isUsernameTaken(username)) {
             throw new IllegalArgumentException("Cant add a username that is already taken: " + username);
         }

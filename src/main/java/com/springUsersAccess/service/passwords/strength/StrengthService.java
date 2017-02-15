@@ -1,4 +1,4 @@
-package com.springUsersAccess.service.creation.passwords.strength;
+package com.springUsersAccess.service.passwords.strength;
 
 
 /**

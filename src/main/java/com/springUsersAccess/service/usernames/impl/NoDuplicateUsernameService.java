@@ -1,7 +1,7 @@
-package com.springUsersAccess.service.creation.usernames.impl;
+package com.springUsersAccess.service.usernames.impl;
 
 import com.springUsersAccess.dao.UserDao;
-import com.springUsersAccess.service.creation.usernames.UsernameService;
+import com.springUsersAccess.service.usernames.UsernameService;
 
 import java.sql.SQLException;
 

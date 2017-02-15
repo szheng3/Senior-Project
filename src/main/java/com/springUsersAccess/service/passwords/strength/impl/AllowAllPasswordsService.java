@@ -1,6 +1,6 @@
-package com.springUsersAccess.service.creation.passwords.strength.impl;
+package com.springUsersAccess.service.passwords.strength.impl;
 
-import com.springUsersAccess.service.creation.passwords.strength.StrengthService;
+import com.springUsersAccess.service.passwords.strength.StrengthService;
 
 /**
  * Created by Alex Almanza on 2/5/17.

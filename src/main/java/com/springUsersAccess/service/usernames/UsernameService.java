@@ -1,4 +1,4 @@
-package com.springUsersAccess.service.creation.usernames;
+package com.springUsersAccess.service.usernames;
 
 import java.sql.SQLException;
 

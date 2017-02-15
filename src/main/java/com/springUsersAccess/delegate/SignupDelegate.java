@@ -1,10 +1,10 @@
 package com.springUsersAccess.delegate;
 
-import com.springUsersAccess.service.creation.passwords.hashed.HashingService;
-import com.springUsersAccess.service.creation.passwords.strength.StrengthService;
-import com.springUsersAccess.service.creation.salt.SaltGenService;
-import com.springUsersAccess.service.creation.users.HashedUserGenService;
-import com.springUsersAccess.service.creation.usernames.UsernameService;
+import com.springUsersAccess.service.passwords.hash.HashingService;
+import com.springUsersAccess.service.passwords.strength.StrengthService;
+import com.springUsersAccess.service.passwords.salt.SaltGenService;
+import com.springUsersAccess.service.users.creation.NewUserService;
+import com.springUsersAccess.service.usernames.UsernameService;
 
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -14,9 +14,9 @@ import java.util.Arrays;
  */
 public class SignupDelegate {
     // Deceleration of services to be used, exact implementations are defined as spring beans in signupapp-config.xml
-    private HashedUserGenService hashedUserGenService;
-    public void setHashedUserGenService(HashedUserGenService hashedUserGenService) {
-        this.hashedUserGenService = hashedUserGenService;
+    private NewUserService newUserService;
+    public void setNewUserService(NewUserService newUserService) {
+        this.newUserService = newUserService;
     }
 
     private SaltGenService saltGenService;
@@ -61,13 +61,13 @@ public class SignupDelegate {
         if(!isUsernameAllowed(username)) {
             throw new IllegalArgumentException("Username is not unique: " + username);
         }
-        // Create a hashed version of the plain text password
+        // Create a hash version of the plain text password
         byte[] salt = saltGenService.makeSalt();
         String hashed_password = hashingService.createHashedPassword(salt, plaintext_password);
 
-        hashedUserGenService.createUser(username, salt, hashed_password);
+        newUserService.createUser(username, salt, hashed_password);
         // TODO: remove after testing
-        System.out.print(String.format("Account created: \n(username, plaintext, salt, hashed)\n(%s, %s, %s, %s)",
+        System.out.print(String.format("Account created: \n(username, plaintext, salt, hash)\n(%s, %s, %s, %s)",
                 username, plaintext_password, new String(Arrays.toString(salt)), hashed_password));
     }
 }
