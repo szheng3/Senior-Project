@@ -39,7 +39,7 @@ public class SignupController {
         // TODO: find out if returning a null model is an acceptable practice
         ModelAndView model = null;
         try {
-            if (!signupDelegate.isUsernameAllowed(signupBean.getUsername())) {
+            if (!signupDelegate.isUsernameAvailable(signupBean.getUsername())) {
                 // Take the user back to the signup screen
                 model = new ModelAndView("signup");
                 model.addObject("username_msg", "*Username is already taken");
@@ -49,10 +49,14 @@ public class SignupController {
                 model = new ModelAndView("signup");
                 model.addObject("password_msg", "*Password is too weak");
             }
+            else if (!signupDelegate.isFormatCorrect(signupBean.getUsername())) {
+                // Take the user back to the signup screen
+                model = new ModelAndView("signup");
+                // TODO specify format in a better way that is globally accessible
+                model.addObject("username_msg", "*Username has wrong format:");
+            }
             else {
                 // TODO give the user input that they have made their account
-
-                // TODO Store Hashed account info into DB
                 signupDelegate.createUser(signupBean.getUsername(), signupBean.getPassword());
 
                 // Create a model object to take the user to the login screen
