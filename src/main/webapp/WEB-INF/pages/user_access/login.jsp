@@ -87,7 +87,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="content">
-                <h1>Sign In</h1>
+                <h1>Login</h1>
                 <form:form id="loginForm" method="post" action="login" modelAttribute="loginBean" class="form-horizontal">
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-push-4">
