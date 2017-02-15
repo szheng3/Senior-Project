@@ -13,5 +13,4 @@ import java.sql.SQLException;
  */
 public interface AuthenticationService {
     boolean isValidUser(String username, String password_plaintext) throws SQLException;
-
 }

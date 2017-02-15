@@ -10,7 +10,7 @@ import com.springUsersAccess.service.authentication.AuthenticationService;
  * A class that uses the AuthenticationService interface to authenticate users. Authentication is performed by
  * UserDAO, but this service encapsulates the DAO to prevent unwanted alterations.
  */
-public class NoHashAuthServiceImpl implements AuthenticationService {
+public class AuthServiceImpl implements AuthenticationService {
 
     private UserDao userDao;
 

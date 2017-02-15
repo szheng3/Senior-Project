@@ -17,7 +17,7 @@
         <property name="authenticationService" ref="authenticationService"/>
     </bean>
 
-    <bean id="authenticationService" class="com.springUsersAccess.service.authentication.impl.NoHashAuthServiceImpl">
+    <bean id="authenticationService" class="com.springUsersAccess.service.authentication.impl.AuthServiceImpl">
         <property name="userDao" ref="userDao" />
     </bean>
 

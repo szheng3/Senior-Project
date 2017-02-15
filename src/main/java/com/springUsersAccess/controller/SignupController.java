@@ -1,6 +1,5 @@
 package com.springUsersAccess.controller;
 
-import com.springUsersAccess.delegate.HashPassDelegate;
 import com.springUsersAccess.delegate.SignupDelegate;
 import com.springUsersAccess.viewBean.LoginBean;
 import com.springUsersAccess.viewBean.SignupBean;
@@ -11,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 
 /**
