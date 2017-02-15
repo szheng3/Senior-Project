@@ -21,7 +21,7 @@
     <!-- TODO: implement using javascript instead of locally on server -->
     <bean id="passwordService" class="com.springUsersAccess.service.impl.AllowAllPasswordsService">
     </bean>
-    <bean id="usernameService" class="com.springUsersAccess.service.impl.NoDuplicateUsernameSerivce">
+    <bean id="usernameService" class="com.springUsersAccess.service.impl.NoDuplicateUsernameService">
         <property name="userDao" ref="userDao" />
     </bean>
 
