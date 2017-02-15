@@ -23,8 +23,8 @@ public class AuthServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public boolean isValidUser(String username, String password_plaintext) throws SQLException {
-        return userDao.isValidUser(username, password_plaintext);
+    public boolean isValidUser(String username, String hashed_password) throws SQLException {
+        return userDao.isValidUser(username, hashed_password);
     }
 
 }

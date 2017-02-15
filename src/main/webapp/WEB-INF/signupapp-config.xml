@@ -6,24 +6,18 @@
             http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <import resource="userdb-confg.xml"/>
+    <import resource="passhash-config.xml"/>
 
     <!-- defines what service implementation to use in signup -->
     <bean id="signupDelegate" class="com.springUsersAccess.delegate.SignupDelegate">
         <property name="newUserService" ref="newUserService" />
-        <property name="saltGenService" ref="saltGenService"/>
-        <property name="hashingService" ref="hashingService"/>
         <property name="strengthService" ref="strengthService" />
         <property name="usernameService" ref="usernameService" />
+        <property name="passHashDelegate" ref="passHashDelegate"/>
     </bean>
 
     <bean id="newUserService" class="com.springUsersAccess.service.users.creation.impl.LeosImpl" >
         <property name="userDao" ref="userDao" />
-    </bean>
-
-    <bean id="saltGenService" class="com.springUsersAccess.service.passwords.salt.impl.LeosImpl">
-    </bean>
-
-    <bean id="hashingService" class="com.springUsersAccess.service.passwords.hash.impl.LeosImpl">
     </bean>
 
     <!-- TODO: implement using javascript instead of locally on server -->
