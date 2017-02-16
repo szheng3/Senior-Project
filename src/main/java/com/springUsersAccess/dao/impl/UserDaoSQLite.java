@@ -23,40 +23,42 @@ public class UserDaoSQLite implements UserDao {
 
     @Override
     public boolean isUsernameTaken(String username) throws SQLException {
-         try (Connection connection = dataSource.getConnection()) {
-             String query = "Select count(1) from user where username = ?";
-             PreparedStatement pstmt = connection.prepareStatement(query);
+         String query = "Select count(1) from user where username = ?";
+
+         try (Connection connection = dataSource.getConnection();
+              PreparedStatement pstmt = connection.prepareStatement(query)) {
+
              pstmt.setString(1, username);
-             ResultSet resultSet = pstmt.executeQuery();
-             if (resultSet.next())
+             try (ResultSet resultSet = pstmt.executeQuery()) {
+                 resultSet.next(); // assumes there will be a result set
                  return (resultSet.getInt(1) > 0);
-             else
-                 // TODO: decide if an exception should be thrown when there is no result set available
-                 return false;
+             }
          }
     }
 
     @Override
     public boolean isValidUser(String username, String password) throws SQLException {
-        try (Connection connection = dataSource.getConnection()) {
-            String query = "SELECT count(1) FROM main.user WHERE username = ? AND password = ?";
-            PreparedStatement pstmt = connection.prepareStatement(query);
+        String query = "SELECT count(1) FROM main.user WHERE username = ? AND password = ?";
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement pstmt = connection.prepareStatement(query)) {
+
             pstmt.setString(1, username);
             pstmt.setString(2, password);
-            ResultSet resultSet = pstmt.executeQuery();
-            if (resultSet.next())
+            try(ResultSet resultSet = pstmt.executeQuery()) {
+                resultSet.next();  // assumes there will be a result set
                 return (resultSet.getInt(1) > 0);
-            else
-                // TODO: decide if an exception should be thrown when there is no result set available
-                return false;
+            }
         }
     }
 
     @Override
     public void addPassword(String username, String password) throws SQLException{
         String query = "UPDATE user SET password = ? WHERE username = ?";
+
         try (Connection connection = dataSource.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
+
             pstmt.setString(1, password);
             pstmt.setString(2, username);
             pstmt.executeUpdate();
@@ -73,6 +75,7 @@ public class UserDaoSQLite implements UserDao {
         String query = "INSERT INTO user (username, password, salt) VALUES (?, ?, ?)";
         try (Connection connection = dataSource.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
+
             pstmt.setString(1, username);
             pstmt.setString(2, hashed_password);
             pstmt.setBytes(3, salt);
@@ -90,6 +93,7 @@ public class UserDaoSQLite implements UserDao {
         String query = "INSERT INTO user (username, salt) VALUES (?, ?)";
         try (Connection connection = dataSource.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
+
             pstmt.setString(1, username);
             pstmt.setBytes(2, salt);
             pstmt.executeUpdate();
@@ -115,16 +119,20 @@ public class UserDaoSQLite implements UserDao {
 
     @Override
     public byte[] getSalt(String username) throws SQLException {
-        try (Connection connection = dataSource.getConnection()) {
-            String query = "SELECT salt FROM main.user WHERE username = ?";
-            PreparedStatement pstmt = connection.prepareStatement(query);
+        String query = "SELECT salt FROM main.user WHERE username = ?";
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement pstmt = connection.prepareStatement(query)) {
+
             pstmt.setString(1, username);
-            ResultSet resultSet = pstmt.executeQuery();
-            if (resultSet.next()) {
-                byte[] salt = resultSet.getBytes(1);
-                return salt;
+
+            try(ResultSet resultSet = pstmt.executeQuery()) {
+                // The program should not try to access the salt of a tuple with no given salt
+                if (!resultSet.next()) {
+                    throw new IllegalArgumentException("No salt has been given to this user: " + username);
+                }
+                return resultSet.getBytes(1);
             }
-            throw new IllegalArgumentException("No salt has been given to this user: " + username);
         }
     }
 
