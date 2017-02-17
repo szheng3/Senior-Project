@@ -82,22 +82,20 @@
 
         <div class="collapse navbar-collapse" id="bs-nav-demo">
             <ul class="navbar-nav navbar-right nav">
-                <li><a ><c:out value="${username}"/></a></li>
-
-
-                <li><a href="${pageContext.request.contextPath}/login">
 
                     <c:choose>
                         <c:when test="${username!=null}">
-                            Switch Account
+                            <li><a ><c:out value="${username}"/></a></li>
+                            <li><a href="${pageContext.request.contextPath}/login">Switch Account</a></li>
                         </c:when>
                         <c:otherwise>
-                            Log In
+                            <li><a href="${pageContext.request.contextPath}/login">Log In</a></li>
+                            <li><a href="${pageContext.request.contextPath}/signup">Sign Up</a></li>
                         </c:otherwise>
                     </c:choose>
-                </a></li>
+
                 <!-- TODO: create signup mechanism -->
-                <li><a href="${pageContext.request.contextPath}/signup">Sign Up</a></li>
+
             </ul>
         </div>
     </div>
