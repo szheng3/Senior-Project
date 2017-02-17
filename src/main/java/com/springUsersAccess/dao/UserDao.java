@@ -10,7 +10,11 @@ import java.sql.SQLException;
 public interface UserDao {
     boolean isUsernameTaken(String username) throws SQLException;
     boolean isValidUser(String username, String password) throws SQLException;
-    void addUser(String username, String password) throws SQLException;
-    String getSalt(String username) throws SQLException;
+    void addPassword(String username, String password) throws SQLException;
+    void addUser(String username, byte[] salt, String hashed_password) throws SQLException;
+    void addUser(String username, byte[] salt) throws SQLException;
+
+    void updateSalt(String username, byte[] salt) throws SQLException;
+    byte[] getSalt(String username) throws SQLException;
     String changePassword(String username, String password_current, String password_new) throws SQLException;
 }
