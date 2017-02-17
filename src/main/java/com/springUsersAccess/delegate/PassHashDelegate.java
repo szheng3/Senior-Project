@@ -1,5 +1,6 @@
 package com.springUsersAccess.delegate;
 
+import com.springUsersAccess.service.passwords.creation.NewPasswordService;
 import com.springUsersAccess.service.passwords.hash.HashingService;
 import com.springUsersAccess.service.passwords.salt.SaltGenService;
 
@@ -9,7 +10,7 @@ import java.sql.SQLException;
  * Created by Alex Almanza on 2/15/17.
  */
 public class PassHashDelegate {
-
+    //
     private SaltGenService saltGenService;
     public void setSaltGenService(SaltGenService saltGenService) {
         this.saltGenService = saltGenService;
@@ -20,11 +21,22 @@ public class PassHashDelegate {
         this.hashingService = hashingService;
     }
 
-    public byte[] makeSalt(String username) throws SQLException {
-        return saltGenService.makeSalt(username);
+    private NewPasswordService newPasswordService;
+    public void setHashingService(NewPasswordService newPasswordService) {
+        this.newPasswordService = newPasswordService;
+    }
+    //
+
+    public byte[] generateSalt() {
+        return saltGenService.generateSalt();
     }
 
-    public String createHashedPassword(String username, String text) throws SQLException{
-        return hashingService.createHashedPassword(username, text);
+    public String saltedHash(byte[] salt, String plaintext_password) {
+        return hashingService.saltedHash(salt, plaintext_password);
+    }
+
+    public int securelyStorePassword(String plaintext_password) throws SQLException {
+        byte[] salt = generateSalt();
+        return newPasswordService.storeSaltHashPair(salt, saltedHash(salt, plaintext_password));
     }
 }

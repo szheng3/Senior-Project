@@ -11,11 +11,14 @@
     </bean>
 
     <bean id="saltGenService" class="com.springUsersAccess.service.passwords.salt.impl.LeosImpl">
-        <property name="userDao" ref="userDao" />
     </bean>
 
     <bean id="hashingService" class="com.springUsersAccess.service.passwords.hash.impl.LeosImpl">
-        <property name="userDao" ref="userDao" />
     </bean>
+
+    <bean id="newPasswordService" class="com.springUsersAccess.service.passwords.creation.impl.SaltHashImpl">
+        <property name="passwordDao" ref="passwordDao"></property>
+    </bean>
+
 
 </beans>

@@ -22,6 +22,7 @@
 
     <bean id="authenticationService" class="com.springUsersAccess.service.users.authentication.impl.AuthServiceImpl">
         <property name="userDao" ref="userDao" />
+        <property name="passwordDao" ref="passwordDao" />
     </bean>
 
 </beans>
