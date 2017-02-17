@@ -78,6 +78,7 @@
             </button>
             <a href="" class="navbar-brand"><span class="glyphicon glyphicon-picture"></span>
                 Home</a>
+            <a style="text-align: center;"><c:out value="${username}"/></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-nav-demo">
             <ul class="navbar-nav navbar-right nav">
