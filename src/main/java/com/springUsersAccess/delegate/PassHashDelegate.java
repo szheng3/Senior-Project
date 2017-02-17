@@ -22,7 +22,7 @@ public class PassHashDelegate {
     }
 
     private NewPasswordService newPasswordService;
-    public void setHashingService(NewPasswordService newPasswordService) {
+    public void setNewPasswordService(NewPasswordService newPasswordService) {
         this.newPasswordService = newPasswordService;
     }
     //
@@ -37,6 +37,8 @@ public class PassHashDelegate {
 
     public int securelyStorePassword(String plaintext_password) throws SQLException {
         byte[] salt = generateSalt();
-        return newPasswordService.storeSaltHashPair(salt, saltedHash(salt, plaintext_password));
+        String hashed_password = saltedHash(salt, plaintext_password);
+        int password_ref = newPasswordService.storeSaltHashPair(salt, hashed_password);
+        return password_ref;
     }
 }

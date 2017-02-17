@@ -10,7 +10,7 @@ import java.sql.SQLException;
  * Created by Alex Almanza on 2/16/17.
  */
 public class SaltHashImpl implements NewPasswordService{
-    PasswordDao passwordDao;
+    private PasswordDao passwordDao;
     public void setPasswordDao(PasswordDao passwordDao) {
         this.passwordDao = passwordDao;
     }

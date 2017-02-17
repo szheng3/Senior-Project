@@ -15,6 +15,7 @@ public class LeosImpl implements SaltGenService {
         final Random r = new SecureRandom();
         byte[] salt = new byte[32];
         r.nextBytes(salt);
+        System.out.println("New salt created: ");
         System.out.println(org.apache.commons.codec.binary.Base64.encodeBase64String(salt));    //DEBUG PRINTF
         return salt;
     }
