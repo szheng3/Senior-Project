@@ -166,15 +166,19 @@ We need to make a symbolic link from our project folder to our server folder.
 Below is how it's done for Windows, for other OS should be similar:
 
 0. Open CMD as Admin
+
     ![sqlite0](https://cloud.githubusercontent.com/assets/23114334/23053452/85a83414-f48e-11e6-9a87-e834730fb42f.png)
 
 1. Run Command Line as 
     mklink "targetFolder\user_db.sqlite" "originalFolder\user_db.sqlite"
    In my example, my command looks like:
+   
    ![sqlite1](https://cloud.githubusercontent.com/assets/23114334/23053583/76692e80-f48f-11e6-84f5-ac650ae38a6e.png)
+
    You should see the success prompt just like I did.
    
 2. Now you should see the symlink file in the server folder, as shown:
+
    ![sqlite2](https://cloud.githubusercontent.com/assets/23114334/23053597/94f07ea8-f48f-11e6-9d9c-a4c69e9d6717.png)
 
 
