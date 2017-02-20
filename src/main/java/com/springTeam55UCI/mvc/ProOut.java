@@ -8,9 +8,17 @@ import java.io.PrintWriter;
  * Created by Shuai Zheng on 11/23/16.
  */
 public class ProOut {
+    public static void main(String[] args) {
+        ProOut test = new ProOut();
+        test.ProFileOutApplication("/Users/zhengshuai", "now");
+
+    }
+
     public void ProFileOutApplication(String Path, String Filename) {
 
         try {
+
+
             PrintWriter writer = new PrintWriter(Path + File.separator + "proguard.pro", "UTF-8");
             writer.println("-injars " + Filename);
             writer.println("-outjars obfuscation_out.jar");
@@ -69,12 +77,6 @@ public class ProOut {
         } catch (Exception e) {
             // do something
         }
-    }
-
-    public static void main(String[] args) {
-        ProOut test = new ProOut();
-        test.ProFileOutApplication("/Users/zhengshuai", "now");
-
     }
 
 }
