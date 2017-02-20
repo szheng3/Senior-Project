@@ -38,37 +38,37 @@
 
 <br/>
 
+${requestScope["download"]}
+
+<%--<%--%>
+
+<%--String outputAddr = session.getServletContext().getRealPath("/");--%>
+<%--String txtFilePath = outputAddr+ "/output.txt";--%>
+<%--BufferedReader bfrdr = new BufferedReader(new FileReader(txtFilePath));--%>
+<%--String line;--%>
+<%--String[][] splittedLine = new String[17][17];--%>
+<%--int j=0;--%>
+<%--while((line = bfrdr.readLine())!= null){--%>
+<%--String[] parts = line.split("\\s+");--%>
+<%--for(int i=0; i<17; i++)--%>
+<%--splittedLine[i][j] = parts[i];--%>
+<%--j++;--%>
+<%--}--%>
+
+<%--%>--%>
+
+<%--<TABLE style="text-align:center" align="center">--%>
+<%--<% for(int row=0;row<17;row++) { %>--%>
+<%--<TR>--%>
+<%--<% for(int col=0;col<17;col++) { %>--%>
+<%--<TD> <%=splittedLine[col][row]%>--%>
+<%--</TD>--%>
+<%--<% } %>--%>
+<%--</TR>--%>
+<%--<% } %>--%>
+<%--</TABLE>--%>
 
 
-<%
-
-    String outputAddr = session.getServletContext().getRealPath("/");
-    String txtFilePath = outputAddr+ "/output.txt";
-    BufferedReader bfrdr = new BufferedReader(new FileReader(txtFilePath));
-    String line;
-    String[][] splittedLine = new String[17][17];
-    int j=0;
-    while((line = bfrdr.readLine())!= null){
-        String[] parts = line.split("\\s+");
-        for(int i=0; i<17; i++)
-            splittedLine[i][j] = parts[i];
-        j++;
-    }
-
-%>
-
-<TABLE style="text-align:center" align="center">
-    <% for(int row=0;row<17;row++) { %>
-        <TR>
-            <% for(int col=0;col<17;col++) { %>
-                <TD> <%=splittedLine[col][row]%>
-                </TD>
-            <% } %>
-        </TR>
-    <% } %>
-</TABLE>
-
-
-</body>
-</html>
+<%--</body>--%>
+<%--</html>--%>
 
