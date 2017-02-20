@@ -5,9 +5,6 @@
             http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <import resource="userdb-confg.xml"/>
-    <import resource="passhash-config.xml"/>
-
     <!-- defines what service implementation to use in signup -->
     <bean id="signupDelegate" class="com.springUsersAccess.delegate.SignupDelegate">
         <property name="newUserService" ref="newUserService" />
