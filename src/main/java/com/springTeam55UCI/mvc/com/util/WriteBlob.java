@@ -12,15 +12,14 @@ import java.sql.SQLException;
  */
 public class WriteBlob {
 
-    public static void writeBlob(Connection conn, String fileaddr) {
-        int id = 159;
+    public static void writeBlob(Connection conn, String fileaddr, int last_id) {
         // update sql
             String updateSQL = "UPDATE OUTPUT "
                 + "SET outputfile = ? "
-                + "WHERE id=159";
+                + "WHERE id=";
 
         try {
-            PreparedStatement psmt = conn.prepareStatement(updateSQL);
+            PreparedStatement psmt = conn.prepareStatement(updateSQL+last_id);
             // read the file
             File file = new File(fileaddr);
             FileInputStream input = new FileInputStream(file);
