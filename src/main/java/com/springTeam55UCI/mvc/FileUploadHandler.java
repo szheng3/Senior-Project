@@ -2,8 +2,8 @@ package com.springTeam55UCI.mvc;
 
 //import ShuaiZheng.Machine.MachineLearning;
 
-import ShuaiZheng.Machine.MachineLearning;
 
+import ShuaiZheng.Machine.d;
 import com.springTeam55UCI.mvc.com.util.ConnectionConfig;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -27,7 +27,7 @@ import java.util.List;
 public class FileUploadHandler extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         PrintWriter out = response.getWriter();
 
         request.getSession().setMaxInactiveInterval(1440);
@@ -41,8 +41,8 @@ public class FileUploadHandler extends HttpServlet {
                 for (FileItem item : multiparts) {
                     if (!item.isFormField()) {
                         item.write(new File(request.getSession().getServletContext().getRealPath("") + File.separator + new File(item.getName()).getName()));
-//                        ProOut Profile = new ProOut();
-//                        Profile.ProFileOutApplication(request.getSession().getServletContext().getRealPath(""), new File(item.getName()).getName());
+                        ProOut Profile = new ProOut();
+                        Profile.ProFileOutApplication(request.getSession().getServletContext().getRealPath(""), new File(item.getName()).getName());
 //                        String[] args = new String[2];
 //                        args[0] = "@" + request.getSession().getServletContext().getRealPath("") + File.separator + "proguard.pro";
 //                        Main Obfusacate = new Main();
@@ -57,8 +57,8 @@ public class FileUploadHandler extends HttpServlet {
 
                         System.out.println(input[0]);
 
-
-                        new MachineLearning().main(input);
+                        (new d()).a(input);
+//                        new MachineLearning().main(input);
                         System.out.println("sssss");
                         request.setAttribute("download", request.getSession().getServletContext().getRealPath("") + File.separator + "output.txt");
 

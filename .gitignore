@@ -7,6 +7,7 @@
 *.iml
 target
 src/main/webapp/WEB-INF/lib/testai.jar
+src/main/webapp/WEB-INF/lib/obfuscation.jar
 src/main/webapp/resources/ShuaiZhengTrained.zip
 
 
