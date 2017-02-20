@@ -1,7 +1,8 @@
 package com.springTeam55UCI.mvc;
 
 //import ShuaiZheng.Machine.MachineLearning;
-//import ShuaiZheng.Machine.MachineLearning;
+
+import ShuaiZheng.Machine.MachineLearning;
 
 import com.springTeam55UCI.mvc.com.util.ConnectionConfig;
 import org.apache.commons.fileupload.FileItem;
@@ -57,7 +58,7 @@ public class FileUploadHandler extends HttpServlet {
                         System.out.println(input[0]);
 
 
-//                        new MachineLearning().main(input);
+                        new MachineLearning().main(input);
                         System.out.println("sssss");
                         request.setAttribute("download", request.getSession().getServletContext().getRealPath("") + File.separator + "output.txt");
 
