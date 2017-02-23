@@ -8,6 +8,7 @@
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <import resource="userdb-confg.xml" />
+    <import resource="passhash-config.xml"/>
 
     <!--
         The fields for classes are declared using the interface class. That way, they exact implementation class
@@ -15,10 +16,13 @@
     -->
     <bean id="loginDelegate" class="com.springUsersAccess.delegate.LoginDelegate">
         <property name="authenticationService" ref="authenticationService"/>
+        <property name="passHashDelegate" ref="passHashDelegate" />
+        <property name="usernameService" ref="usernameService"/>
     </bean>
 
-    <bean id="authenticationService" class="com.springUsersAccess.service.impl.NoHashAuthServiceImpl">
+    <bean id="authenticationService" class="com.springUsersAccess.service.users.authentication.impl.AuthServiceImpl">
         <property name="userDao" ref="userDao" />
+        <property name="passwordDao" ref="passwordDao" />
     </bean>
 
 </beans>

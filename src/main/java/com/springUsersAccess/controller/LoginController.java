@@ -16,8 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.springUsersAccess.delegate.LoginDelegate;
 import com.springUsersAccess.viewBean.LoginBean;
 
+import java.sql.SQLException;
+
 
 @Controller
+@RequestMapping(value = "/login")
 public class LoginController {
     private final LoginDelegate loginDelegate;
 
@@ -29,12 +32,11 @@ public class LoginController {
     /**
      * Method used when the user firsts access the login page. Since it will be a GET request, the login
      * form is provided when the user accesses the login page.
-     * @param request
-     * @param response
      * @return
      */
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView displayLogin(HttpServletRequest request, HttpServletResponse response) {
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView displayLogin() {
 
         // Creates a ModelAndView object with a view of 'login'
         // the page for 'login' is then determined by InternalResourceViewResolver,
@@ -51,33 +53,38 @@ public class LoginController {
     /**
      * A method that is called when a user makes a login attempt. If the user provided valid credentials, then they are
      * directed to the welcom page. Otherwise, the user is navigated back to the login page.
-     * @param request
-     * @param response
      * @param loginBean
      * @return
      */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView executeLogin(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            @ModelAttribute("loginBean") LoginBean loginBean) {
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ModelAndView executeLogin(@ModelAttribute("loginBean") LoginBean loginBean) {
+
+        // ModelAndView object will be defined to according to the validity of the provided credentials
         ModelAndView model = null;
+
         try {
+            // Check if the user provided the proper credentials
             boolean isValidUser = loginDelegate.isValidUser(loginBean.getUsername(), loginBean.getPassword());
+
+            // Defines the model object that will take the user to the proper page
             if (isValidUser) {
+                // TODO create service that actually signs in user, right now only credentials are checked
                 System.out.println("User Login Successful");
-                request.setAttribute("loggedInUser", loginBean.getUsername());
                 model = new ModelAndView("welcome");
+                // TODO create a new view class for a signed in user
+                model.addObject("username", loginBean.getUsername());
             }
             else {
                 System.out.println("User Login Unsuccessful");
                 model = new ModelAndView("login");
                 model.addObject("loginBean", loginBean);
-                request.setAttribute("message", "*Username or password is invalid");
+                model.addObject("message", "*  Username or password is invalid");
             }
-
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
+            model = new ModelAndView("error");
+            model.addObject("error_message", "Database error");
         }
 
         return model;

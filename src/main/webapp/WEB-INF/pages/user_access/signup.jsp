@@ -5,6 +5,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="include.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -89,13 +90,13 @@
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-push-4">
                             <form:input id="username" name="username" path="username" class="form-control" type="text" placeholder="username" />
-                            <p style="color: #ff1700">${username_msg}</p>
+                            <p style="color: #ff1700"><c:out value="${username_msg}"/></p>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-push-4">
                             <form:input id="password" name="password" path="password" class="form-control" type="password" placeholder="password"/>
-                            <p style="color: #ff1700">${password_msg}</p>
+                            <p style="color: #ff1700"><c:out value="${password_msg}"/></p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -104,6 +105,15 @@
                         </div>
                     </div>
                 </form:form>
+                <%--TODO: have rules accessible in a global way--%>
+                Username Rules:
+                <ol>
+                    <li>Only contains alphanumeric characters, underscore and dot.</li>
+                    <li>Underscore and dot can't be at the end or start of a username<br>(e.g _username / username_ / .username / username.).</li>
+                    <li>Underscore and dot can't be next to each other<br>(e.g user_.name).</li>
+                    <li>Underscore or dot can't be used multiple times in a row<br>(e.g user__name / user..name).</li>
+                    <li>Number of characters must be between 8 to 20.</li>
+                </ol>
             </div>
         </div>
     </div>

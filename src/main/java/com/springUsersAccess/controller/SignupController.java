@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 
 /**
@@ -19,6 +17,7 @@ import java.sql.SQLException;
  */
 
 @Controller
+@RequestMapping(value = "/signup")
 public class SignupController {
     private final SignupDelegate signupDelegate;
 
@@ -27,39 +26,41 @@ public class SignupController {
         this.signupDelegate = signupDelegate;
     }
 
-    @RequestMapping(value = "/signup", method = RequestMethod.GET)
-    public ModelAndView displaySignup(HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView displaySignup() {
         ModelAndView model = new ModelAndView("signup");
         SignupBean signupBean = new SignupBean();
         model.addObject("signupBean", signupBean);
         return model;
     }
 
-    @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public ModelAndView executeSignup(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            @ModelAttribute("signupBean") SignupBean signupBean) {
+    @RequestMapping(method = RequestMethod.POST)
+    public ModelAndView executeSignup(@ModelAttribute("signupBean") SignupBean signupBean) {
         // TODO: find out if returning a null model is an acceptable practice
         ModelAndView model = null;
         try {
-            if (!signupDelegate.isUsernameAllowed(signupBean.getUsername())) {
-                request.setAttribute("username_msg", "*Username is already taken");
+            if (!signupDelegate.isUsernameAvailable(signupBean.getUsername())) {
                 // Take the user back to the signup screen
                 model = new ModelAndView("signup");
+                model.addObject("username_msg", "*Username is already taken");
             }
             else if (!signupDelegate.isPasswordAllowed(signupBean.getPassword())) {
-                request.setAttribute("password_msg", "*Password is too weak");
                 // Take the user back to the signup screen
                 model = new ModelAndView("signup");
+                model.addObject("password_msg", "*Password is too weak");
+            }
+            else if (!signupDelegate.isFormatCorrect(signupBean.getUsername())) {
+                // Take the user back to the signup screen
+                model = new ModelAndView("signup");
+                // TODO specify format in a better way that is globally accessible
+                model.addObject("username_msg", "*Username has wrong format:");
             }
             else {
                 // TODO give the user input that they have made their account
-
                 signupDelegate.createUser(signupBean.getUsername(), signupBean.getPassword());
 
                 // Create a model object to take the user to the login screen
-                model = new ModelAndView("login");
+                model = new ModelAndView("redirect:/login");
 
                 // Create a login bean based on input to used to make the new user
                 LoginBean loginBean = new LoginBean();
@@ -67,13 +68,13 @@ public class SignupController {
                 loginBean.setPassword(signupBean.getPassword());
 
                 model.addObject("loginBean", loginBean);
-                request.setAttribute("message",
-                        "An account for " + signupBean.getUsername() + " was successfully created!\n"
-                        + "You are now signed in.");
+                model.addObject("message",
+                                String.format("An account for %s was successfully created!", signupBean.getUsername()));
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
+            model = new ModelAndView("error");
+            model.addObject("error_message", "Database error");
         }
 
         return model;

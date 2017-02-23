@@ -1,4 +1,4 @@
-package com.springUsersAccess.service;
+package com.springUsersAccess.service.usernames;
 
 import java.sql.SQLException;
 
@@ -8,4 +8,5 @@ import java.sql.SQLException;
 public interface UsernameService {
     boolean usernameIsTaken(String username) throws SQLException;
     String suggestUsername(String[] words);
+    boolean checkFormat(String username);
 }

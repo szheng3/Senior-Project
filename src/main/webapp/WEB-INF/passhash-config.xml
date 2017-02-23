@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="passHashDelegate" class="com.springUsersAccess.delegate.PassHashDelegate">
+        <property name="saltGenService" ref="saltGenService"/>
+        <property name="hashingService" ref="hashingService"/>
+        <property name="newPasswordService" ref="newPasswordService"/>
+    </bean>
+
+    <bean id="saltGenService" class="com.springUsersAccess.service.passwords.salt.impl.LeosImpl">
+    </bean>
+
+    <bean id="hashingService" class="com.springUsersAccess.service.passwords.hash.impl.LeosImpl">
+    </bean>
+
+    <bean id="newPasswordService" class="com.springUsersAccess.service.passwords.creation.impl.SaltHashImpl">
+        <property name="passwordDao" ref="passwordDao"/>
+    </bean>
+
+
+</beans>

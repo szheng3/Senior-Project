@@ -1,9 +1,6 @@
 package com.springTeam55UCI.mvc;
 
-//import ShuaiZheng.Machine.MachineLearning;
-
-
-import ShuaiZheng.Machine.d;
+import EECS159.ShuaiZheng.Sort.Hw5Johnsons;
 import com.springTeam55UCI.mvc.com.util.ConnectionConfig;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -21,13 +18,17 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
+import static com.springTeam55UCI.mvc.com.util.CheckTable.CheckTable;
+import static com.springTeam55UCI.mvc.com.util.WriteBlob.writeBlob;
+
 /**
  * Created by Shuai Zheng on 11/23/16.
  */
 public class FileUploadHandler extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         PrintWriter out = response.getWriter();
 
         request.getSession().setMaxInactiveInterval(1440);
@@ -49,25 +50,23 @@ public class FileUploadHandler extends HttpServlet {
 //                        Obfusacate.obfuscation(args);
 //                        request.setAttribute("download", request.getSession().getServletContext().getRealPath("") + File.separator + "obfuscation_out.jar");
 
-////
-                        String[] input = new String[3];
+
+                        String[] input = new String[2];
                         input[0] = request.getSession().getServletContext().getRealPath("") + File.separator + new File(item.getName()).getName();
                         input[1] = request.getSession().getServletContext().getRealPath("");
-                        input[2] = request.getSession().getServletContext().getRealPath("") + File.separator + "resources" + File.separator + "ShuaiZhengTrained.zip";
 
-                        System.out.println(input[0]);
+                        new Hw5Johnsons().main(input);
 
-                        (new d()).a(input);
-//                        new MachineLearning().main(input);
-                        System.out.println("sssss");
-                        request.setAttribute("download", request.getSession().getServletContext().getRealPath("") + File.separator + "output.txt");
+                        String outputaddr = request.getSession().getServletContext().getRealPath("") + File.separator + "output.txt";
+                        //System.out.println(outputaddr);
 
                         Connection connection = null;
                         try {
-
                             connection = ConnectionConfig.getConnection();
                             if(connection != null) {
                                 System.out.println("Connection established.");
+                                int last_id = CheckTable(connection);
+                                writeBlob(connection, outputaddr, last_id);
                             }
                             else {
                                 System.out.println("Connection failed.");
@@ -84,7 +83,7 @@ public class FileUploadHandler extends HttpServlet {
                             }
                         }
 
-//                        request.setAttribute("download", request.getSession().getServletContext().getRealPath("") + File.separator + "output.txt");
+                        request.setAttribute("download", request.getSession().getServletContext().getRealPath("") + File.separator + "output.txt");
 
                     }
                 }
@@ -93,8 +92,6 @@ public class FileUploadHandler extends HttpServlet {
                 request.setAttribute("message", "File Uploaded and Obfuscation was successful");
             } catch (Exception ex) {
                 request.setAttribute("message", "File Upload Failed due to " + ex);
-            } catch (Throwable throwable) {
-                throwable.printStackTrace();
             }
         } else {
             request.setAttribute("message", "Sorry this Servlet only handles file upload request");

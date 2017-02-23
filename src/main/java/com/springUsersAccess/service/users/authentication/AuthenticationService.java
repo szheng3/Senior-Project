@@ -1,4 +1,4 @@
-package com.springUsersAccess.service;
+package com.springUsersAccess.service.users.authentication;
 
 /**
  * Created by Alex Almanza on 1/31/17.
@@ -12,6 +12,6 @@ import java.sql.SQLException;
  * http://corej2eepatterns.com/Patterns2ndEd/ApplicationService.htm
  */
 public interface AuthenticationService {
-    boolean isValidUser(String username, String password_plaintext) throws SQLException;
-
+    byte[] getSalt(String username) throws SQLException;
+    boolean isValidUser(String username, String hashed_password) throws SQLException;
 }
