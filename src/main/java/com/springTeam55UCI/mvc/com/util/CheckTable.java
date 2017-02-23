@@ -10,7 +10,7 @@ import java.sql.*;
  * Created by Leo on 2/3/2017.
  */
 public class CheckTable {
-    public static int CheckTable(Connection conn) {
+    public static int CheckTable(Connection conn, boolean CheckOnly) {
 
         int last_id = 1;
         try {
@@ -24,13 +24,17 @@ public class CheckTable {
                     last_id = rs.getInt("ID");
                     System.out.println("last gen ID is " + last_id);
                 }
-                last_id++;
-                String sqlvl0 =  "INSERT INTO OUTPUT(id, outputfile)" +
-                        "VALUES (";
-                String sqlvl1 = ", NULL)";
-                stmt0.executeUpdate(sqlvl0+last_id+sqlvl1);
-                System.out.println("Tuple incremented, ready for upload.");
-
+                if(!CheckOnly) {
+                    last_id++;
+                    String sqlvl0 = "INSERT INTO OUTPUT(id, outputfile)" +
+                            "VALUES (";
+                    String sqlvl1 = ", NULL)";
+                    stmt0.executeUpdate(sqlvl0 + last_id + sqlvl1);
+                    System.out.println("Tuple incremented, ready for upload.");
+                }
+                else {
+                    System.out.println("Only checking size, tuple not incremented.");
+                }
             } else {
                 System.out.println("Table 'OUTPUT' DNE, creating table...");
                 Statement stmt = conn.createStatement();

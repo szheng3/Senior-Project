@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.io.BufferedReader" %>
+<%@ page import="java.io.FileReader" %><%--
   Created by IntelliJ IDEA.
   User: Leo
   Date: 2/20/2017
@@ -16,6 +17,33 @@
 </head>
 
 <body>
-    <%="Teehee" %>
+
+
+
+    <a>The number of files being read is:<%=request.getAttribute("last_id") %></a> <br/>
+    <a><%
+        int last_id = (Integer)request.getAttribute("last_id");
+        String outputAddr = session.getServletContext().getRealPath("/");
+        for(int i=1; i<=last_id; i++) {
+            %>            <br/>
+            <%
+            out.println("The BLOB number "+i+" returns result:");
+            %>            <br/>
+            <%
+            String txtFilePath = outputAddr+ "/output";
+            BufferedReader bfrdr = new BufferedReader(new FileReader(txtFilePath+i+".txt"));
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while((line = bfrdr.readLine())!=null){
+                sb.append(line+"\n");
+            }
+            out.println(sb.toString());
+            %>
+            <br/>
+            <%
+
+        }
+
+    %></a>
 </body>
 </html>
