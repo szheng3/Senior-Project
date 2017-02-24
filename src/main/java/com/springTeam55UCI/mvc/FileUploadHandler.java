@@ -62,7 +62,7 @@ public class FileUploadHandler extends HttpServlet {
                             connection = ConnectionConfig.getConnection();
                             if(connection != null) {
                                 System.out.println("Connection established.");
-                                int last_id = CheckTable(connection, false);
+                                int last_id = CheckTable(connection);
                                 writeBlob(connection, outputaddr, last_id);
                             }
                             else {
