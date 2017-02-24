@@ -8,14 +8,18 @@
     <bean id="passHashDelegate" class="com.springUsersAccess.delegate.PassHashDelegate">
         <property name="saltGenService" ref="saltGenService"/>
         <property name="hashingService" ref="hashingService"/>
+        <property name="newPasswordService" ref="newPasswordService"/>
     </bean>
 
     <bean id="saltGenService" class="com.springUsersAccess.service.passwords.salt.impl.LeosImpl">
-        <property name="userDao" ref="userDao" />
     </bean>
 
     <bean id="hashingService" class="com.springUsersAccess.service.passwords.hash.impl.LeosImpl">
-        <property name="userDao" ref="userDao" />
     </bean>
+
+    <bean id="newPasswordService" class="com.springUsersAccess.service.passwords.creation.impl.SaltHashImpl">
+        <property name="passwordDao" ref="passwordDao"/>
+    </bean>
+
 
 </beans>

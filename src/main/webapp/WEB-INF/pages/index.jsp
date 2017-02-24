@@ -61,11 +61,6 @@
 </head>
 
 <body>
-
-<%--<jsp:include page="hello.jsp"></jsp:include>--%>
-
-<%--<%@ include file="hello.jsp" %>--%>
-
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -81,11 +76,11 @@
         </div>
 
         <div class="collapse navbar-collapse" id="bs-nav-demo">
-            <ul class="navbar-nav navbar-right nav">
+            <ul class="navbar-nav    navbar-right nav">
 
                     <c:choose>
                         <c:when test="${username!=null}">
-                            <li><a ><c:out value="${username}"/></a></li>
+                            <li><a><c:out value="${username}"/></a></li>
                             <li><a href="${pageContext.request.contextPath}/login">Switch Account</a></li>
                         </c:when>
                         <c:otherwise>
@@ -102,41 +97,22 @@
     </div>
 </nav>
 
-
-<%--<div>--%>
-<%--<tiles:insertAttribute name="header"></tiles:insertAttribute>--%>
-<%--</div>--%>
-
-<%--<div>--%>
-<%--<tiles:insertAttribute name="footer"></tiles:insertAttribute>--%>
-<%--</div>--%>
-
-<%--<tiles:insertAttribute name="title"></tiles:insertAttribute>--%>
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
             <div class="content">
                 <h2>${message}</h2>
-
-
                 <hr>
-
-
                 <div>
-
                     <form action="upload" method="post" enctype="multipart/form-data" class="form-inline">
                         <div class="form-group">
-
                             <input type="file" name="file"/>
                         </div>
                         <div class="form-group">
-
                             <input class="btn btn-primary" type="submit" value="upload"/>
                         </div>
-
                     </form>
                 </div>
-
             </div>
         </div>
     </div>

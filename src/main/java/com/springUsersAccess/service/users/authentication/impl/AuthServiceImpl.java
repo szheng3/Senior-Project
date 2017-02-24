@@ -2,6 +2,7 @@ package com.springUsersAccess.service.users.authentication.impl;
 
 import java.sql.SQLException;
 
+import com.springUsersAccess.dao.PasswordDao;
 import com.springUsersAccess.dao.UserDao;
 import com.springUsersAccess.service.users.authentication.AuthenticationService;
 
@@ -11,20 +12,26 @@ import com.springUsersAccess.service.users.authentication.AuthenticationService;
  * UserDAO, but this service encapsulates the DAO to prevent unwanted alterations.
  */
 public class AuthServiceImpl implements AuthenticationService {
-
+    //
     private UserDao userDao;
-
-    public UserDao getUserDao() {
-        return this.userDao;
-    }
-
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
 
+    private PasswordDao passwordDao;
+    public void setPasswordDao(PasswordDao passwordDao) {
+        this.passwordDao = passwordDao;
+    }
+    //
+
+    @Override
+    public byte[] getSalt(String username) throws SQLException {
+        return passwordDao.getSalt(userDao.getPasswordRef(username));
+    }
+
     @Override
     public boolean isValidUser(String username, String hashed_password) throws SQLException {
-        return userDao.isValidUser(username, hashed_password);
+        return hashed_password.equals(passwordDao.getHash(userDao.getPasswordRef(username)));
     }
 
 }

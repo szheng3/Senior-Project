@@ -23,114 +23,58 @@ public class UserDaoSQLite implements UserDao {
 
     @Override
     public boolean isUsernameTaken(String username) throws SQLException {
-         try (Connection connection = dataSource.getConnection()) {
-             String query = "Select count(1) from user where username = ?";
-             PreparedStatement pstmt = connection.prepareStatement(query);
+         String query = "Select count(1) from user where username = ?";
+
+         try (Connection connection = dataSource.getConnection();
+              PreparedStatement pstmt = connection.prepareStatement(query)) {
+
              pstmt.setString(1, username);
-             ResultSet resultSet = pstmt.executeQuery();
-             if (resultSet.next())
+             try (ResultSet resultSet = pstmt.executeQuery()) {
+                 resultSet.next(); // assumes there will be a result set
                  return (resultSet.getInt(1) > 0);
-             else
-                 // TODO: decide if an exception should be thrown when there is no result set available
-                 return false;
+             }
          }
     }
 
     @Override
-    public boolean isValidUser(String username, String password) throws SQLException {
-        try (Connection connection = dataSource.getConnection()) {
-            String query = "SELECT count(1) FROM main.user WHERE username = ? AND password = ?";
-            PreparedStatement pstmt = connection.prepareStatement(query);
-            pstmt.setString(1, username);
-            pstmt.setString(2, password);
-            ResultSet resultSet = pstmt.executeQuery();
-            if (resultSet.next())
-                return (resultSet.getInt(1) > 0);
-            else
-                // TODO: decide if an exception should be thrown when there is no result set available
-                return false;
-        }
-    }
-
-    @Override
-    public void addPassword(String username, String password) throws SQLException{
-        String query = "UPDATE user SET password = ? WHERE username = ?";
+    public void reserveUsername(String username) throws SQLException {
+        String query = "INSERT INTO user (username) VALUES (?)";
         try (Connection connection = dataSource.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
-            pstmt.setString(1, password);
-            pstmt.setString(2, username);
+            pstmt.setString(1, username);
             pstmt.executeUpdate();
         }
     }
 
     @Override
-    public void addUser(String username, byte[] salt, String hashed_password) throws SQLException{
-        // Only adds the new user if the user name isnt already taken
+    public void addUser(String username, int password_ref) throws SQLException{
+        // Only adds the new user if the user name isn't already taken
         if (isUsernameTaken(username)) {
             throw new IllegalArgumentException("A record for that username already exists: " + username);
         }
 
-        String query = "INSERT INTO user (username, password, salt) VALUES (?, ?, ?)";
+        String query = "INSERT INTO user (username, password_ref) VALUES (?, ?)";
         try (Connection connection = dataSource.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
+
             pstmt.setString(1, username);
-            pstmt.setString(2, hashed_password);
-            pstmt.setBytes(3, salt);
+            pstmt.setInt(2, password_ref);
             pstmt.executeUpdate();
         }
     }
 
     @Override
-    public void addUser(String username, byte[] salt) throws SQLException{
-        // Only adds the new user if the user name isnt already taken
-        if (isUsernameTaken(username)) {
-            throw new IllegalArgumentException("A record for that username already exists: " + username);
-        }
+    public int getPasswordRef(String username) throws SQLException {
+        String query = "Select password_ref from user where username = ?";
 
-        String query = "INSERT INTO user (username, salt) VALUES (?, ?)";
         try (Connection connection = dataSource.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
-            pstmt.setString(1, username);
-            pstmt.setBytes(2, salt);
-            pstmt.executeUpdate();
-        }
-    }
 
-    @Override
-    public void updateSalt(String username, byte[] salt) throws SQLException {
-        throw new UnsupportedOperationException("Cannot safely change salt yet. Need to be sure password is hased to the new salt.");
-//        String updateSQL = "UPDATE user "
-//                + "SET salt = ? "
-//                + "WHERE username=?";
-//
-//            try (Connection conn = dataSource.getConnection();
-//                 PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
-//            // set parameters
-//            pstmt.setBytes(1, salt);
-//            pstmt.setString(2, username);
-//            pstmt.executeUpdate();
-//            System.out.println("Stored Salt in database.");
-//        }
-    }
-
-    @Override
-    public byte[] getSalt(String username) throws SQLException {
-        try (Connection connection = dataSource.getConnection()) {
-            String query = "SELECT salt FROM main.user WHERE username = ?";
-            PreparedStatement pstmt = connection.prepareStatement(query);
             pstmt.setString(1, username);
-            ResultSet resultSet = pstmt.executeQuery();
-            if (resultSet.next()) {
-                byte[] salt = resultSet.getBytes(1);
-                return salt;
+            try (ResultSet resultSet = pstmt.executeQuery()) {
+                resultSet.next(); // assumes there will be a result set
+                return resultSet.getInt(1);
             }
-            throw new IllegalArgumentException("No salt has been given to this user: " + username);
         }
-    }
-
-    @Override
-    public String changePassword(String username, String password_current, String password_new) throws SQLException {
-        // TODO: Implement password changes
-        throw new UnsupportedOperationException("Password changes not yet implemented.");
     }
 }

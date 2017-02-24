@@ -35,14 +35,17 @@ public class LoginDelegate {
 
     public boolean isValidUser(String username, String plaintext_password) throws SQLException {
         System.out.print("Attempting to verify user: " + username + '\n');
-        System.out.print("Plaintext: " + plaintext_password + '\n');
+        System.out.print("Plaintext password: " + plaintext_password + '\n');
+
+        // Check that a record for the username exists
         if (usernameService.usernameIsTaken(username)) {
-            String hashed_password = passHashDelegate.createHashedPassword(username, plaintext_password);
+            byte[] salt = authenticationService.getSalt(username);
+            String hashed_password = passHashDelegate.saltedHash(salt, plaintext_password);
             System.out.print("Hashed: " + hashed_password + '\n');
             return authenticationService.isValidUser(username, hashed_password);
         }
         System.out.print("No record of user" + '\n');
-        return false; // The user doesn't exist
+        return false;
     }
 
 

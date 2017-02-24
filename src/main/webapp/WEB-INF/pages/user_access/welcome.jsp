@@ -16,6 +16,7 @@
 </head>
 <body>
     <div style="text-align: center;">Welcome <c:out value="${username}"/></div>
+    <%--TODO: Specify absolute path--%>
     <jsp:forward page="../index.jsp">
         <jsp:param value="${username}" name="uid" />
         <jsp:param value="true" name="loggedIn" />

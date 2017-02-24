@@ -12,5 +12,6 @@ import java.sql.SQLException;
  * http://corej2eepatterns.com/Patterns2ndEd/ApplicationService.htm
  */
 public interface AuthenticationService {
+    byte[] getSalt(String username) throws SQLException;
     boolean isValidUser(String username, String hashed_password) throws SQLException;
 }

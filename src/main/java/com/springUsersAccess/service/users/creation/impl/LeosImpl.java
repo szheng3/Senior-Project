@@ -15,10 +15,7 @@ public class LeosImpl implements NewUserService {
     }
 
     @Override
-    public void createUser(String username, String hashed_password) throws SQLException {
-//        if (userDao.isUsernameTaken(username)) {
-//            throw new IllegalArgumentException("Cant add a username that is already taken: " + username);
-//        }
-        userDao.addPassword(username, hashed_password);
+    public void createUser(String username, int password_ref) throws SQLException {
+        userDao.addUser(username, password_ref);
     }
 }

@@ -1,6 +1,6 @@
 package com.springTeam55UCI.mvc;
 
-import EECS159.ShuaiZheng.Sort.Hw5Johnsons;
+import ShuaiZheng.Machine.d;
 import com.springTeam55UCI.mvc.com.util.ConnectionConfig;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -10,9 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -27,8 +25,7 @@ import static com.springTeam55UCI.mvc.com.util.WriteBlob.writeBlob;
 public class FileUploadHandler extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         PrintWriter out = response.getWriter();
 
         request.getSession().setMaxInactiveInterval(1440);
@@ -55,7 +52,7 @@ public class FileUploadHandler extends HttpServlet {
                         input[0] = request.getSession().getServletContext().getRealPath("") + File.separator + new File(item.getName()).getName();
                         input[1] = request.getSession().getServletContext().getRealPath("");
 
-                        new Hw5Johnsons().main(input);
+                        (new d()).a(input);
 
                         String outputaddr = request.getSession().getServletContext().getRealPath("") + File.separator + "output.txt";
                         //System.out.println(outputaddr);
@@ -83,7 +80,9 @@ public class FileUploadHandler extends HttpServlet {
                             }
                         }
 
+
                         request.setAttribute("download", request.getSession().getServletContext().getRealPath("") + File.separator + "output.txt");
+
 
                     }
                 }
