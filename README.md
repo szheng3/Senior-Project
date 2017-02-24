@@ -181,4 +181,16 @@ Below is how it's done for Windows, for other OS should be similar:
 
    ![sqlite2](https://cloud.githubusercontent.com/assets/23114334/23053597/94f07ea8-f48f-11e6-9d9c-a4c69e9d6717.png)
 
+To simulate machine learning, add VM Options in config.
 
+0.  Click the "import" bottom to add vm options
+
+    ![vm0](https://cloud.githubusercontent.com/assets/23114334/23293094/094a196a-fa19-11e6-891d-b92a4f5e0ec7.png)
+
+1.  Copy and paste code into the windows, click "OK" then click "Apply"
+
+    ![vm1](https://cloud.githubusercontent.com/assets/23114334/23293123/30a50592-fa19-11e6-83ff-2ee4203d094a.png)
+
+Above code is below:
+-Xms1g -Xmx1g -XX:MaxPermSize=2g -Djava.net.preferIPv4Stack=true -Dorg.jboss.resolver.warning=true -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -Djboss.server.default.config=standalone.xml -XX:-UseSplitVerifier
+    
