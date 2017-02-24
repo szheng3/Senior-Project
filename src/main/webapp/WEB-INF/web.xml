@@ -42,6 +42,7 @@
         <url-pattern>/history</url-pattern>
     </servlet-mapping>
 
+
     <!-- TODO: Change name to user access -->
     <servlet>
         <servlet-name>springLoginApplication</servlet-name>
