@@ -10,7 +10,7 @@
     <context:component-scan base-package="com.springUsersAccess" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="classpath:/WEB-INF/pages/user_access/" />
+        <property name="prefix" value="/WEB-INF/pages/user_access/" />
         <property name="suffix" value=".jsp"/>
     </bean>
 
