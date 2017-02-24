@@ -88,6 +88,7 @@
                             <li><a href="${pageContext.request.contextPath}/signup">Sign Up</a></li>
                         </c:otherwise>
                     </c:choose>
+                            <li><a href="${pageContext.request.contextPath}/history">View History</a></li>
 
                 <!-- TODO: create signup mechanism -->
 
