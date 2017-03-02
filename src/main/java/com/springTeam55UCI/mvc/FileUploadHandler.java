@@ -10,9 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -27,9 +25,7 @@ import static com.springTeam55UCI.mvc.com.util.WriteBlob.writeBlob;
 public class FileUploadHandler extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
-        PrintWriter out = response.getWriter();
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().setMaxInactiveInterval(1440);
         //process only if its multipart content
         if (ServletFileUpload.isMultipartContent(request)) {
@@ -64,7 +60,7 @@ public class FileUploadHandler extends HttpServlet {
                             connection = ConnectionConfig.getConnection();
                             if(connection != null) {
                                 System.out.println("Connection established.");
-                                int last_id = CheckTable(connection);
+                                int last_id = CheckTable(connection, false);
                                 writeBlob(connection, outputaddr, last_id);
                             }
                             else {
@@ -82,7 +78,9 @@ public class FileUploadHandler extends HttpServlet {
                             }
                         }
 
+
                         request.setAttribute("download", request.getSession().getServletContext().getRealPath("") + File.separator + "output.txt");
+
 
                     }
                 }

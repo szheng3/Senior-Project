@@ -32,6 +32,17 @@
         <url-pattern>/upload</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ViewHistoryHandler</servlet-name>
+        <servlet-class>com.springTeam55UCI.mvc.ViewHistoryHandler</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ViewHistoryHandler</servlet-name>
+        <url-pattern>/history</url-pattern>
+    </servlet-mapping>
+
+
     <!-- TODO: Change name to user access -->
     <servlet>
         <servlet-name>springLoginApplication</servlet-name>
