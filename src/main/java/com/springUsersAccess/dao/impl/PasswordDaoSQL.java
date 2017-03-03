@@ -1,16 +1,16 @@
 package com.springUsersAccess.dao.impl;
 
 import com.springUsersAccess.dao.PasswordDao;
-import org.springframework.jdbc.datasource.SingleConnectionDataSource;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import java.sql.*;
 
 /**
  * Created by Alex Almanza on 2/16/17.
  */
-public class PasswordDaoSQLite implements PasswordDao {
-    private SingleConnectionDataSource dataSource ;
-    public void setDataSource(SingleConnectionDataSource dataSource) {
+public class PasswordDaoSQL implements PasswordDao {
+    private DriverManagerDataSource dataSource ;
+    public void setDataSource(DriverManagerDataSource dataSource) {
         this.dataSource = dataSource;
     }
 

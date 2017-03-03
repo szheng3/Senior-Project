@@ -1,0 +1,52 @@
+-- Purpose: A build script for setting up the schema for this project
+-- Created by: Alex Almanza
+-- Usage:
+-- 1) From unix console, start a console session of MySQL as a MySQL user with admin pillages
+--      % sudo mysql --password
+-- 2) While MySQL is running, do the following
+--      mysql> source file_name
+
+-- For testing:
+/*
+SET autocommit = 0;
+START TRANSACTION;
+
+-- Code to test goes here
+
+ROLLBACK;
+*/
+# START TRANSACTION;
+
+# DROP DATABASE IF EXISTS early_version;
+-- DROP USER IF EXISTS 'senior_design'@'localhost';
+
+-- Create the new database "early_version"
+CREATE DATABASE IF NOT EXISTS early_version;
+-- Creates the user to manage the database
+CREATE USER IF NOT EXISTS 'senior_design'@'localhost' identified by 'SD1617';
+-- Gives all the privileges to the new user on the newly created database
+GRANT ALL ON early_version.* to 'senior_design'@'localhost';
+
+
+-- -----------------------------------------------------
+-- Table `early_version`.`password`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `early_version`.`password`
+(
+  `id` INT PRIMARY KEY AUTO_INCREMENT,
+  `salt` BLOB,
+  `hash` VARCHAR(50)
+);
+
+
+-- -----------------------------------------------------
+-- Table `early_version`.`user`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `early_version`.`user`
+(
+  `username` VARCHAR(255) PRIMARY KEY,
+  `password_ref` INT NOT NULL,
+  CONSTRAINT user_password_id_fk FOREIGN KEY (`password_ref`) REFERENCES `early_version`.`password` (id)
+);
+
+# ROLLBACK;
