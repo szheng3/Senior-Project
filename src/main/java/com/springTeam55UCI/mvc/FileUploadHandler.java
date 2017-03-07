@@ -6,10 +6,12 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -23,8 +25,10 @@ import static com.springTeam55UCI.mvc.com.util.WriteBlob.writeBlob;
 public class FileUploadHandler extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().setMaxInactiveInterval(1440);
+        String username = (String)request.getSession().getAttribute("username");
+        System.out.println("username passed to FileUploadHandler: "+username);
         //process only if its multipart content
         if (ServletFileUpload.isMultipartContent(request)) {
             try {
@@ -58,8 +62,8 @@ public class FileUploadHandler extends HttpServlet {
                             connection = ConnectionConfig.getConnection();
                             if(connection != null) {
                                 System.out.println("Connection established.");
-                                int last_id = CheckTable(connection, false);
-                                writeBlob(connection, outputaddr, last_id);
+                                int last_id = CheckTable(connection, username);
+                                writeBlob(connection, outputaddr, last_id, username);
                             }
                             else {
                                 System.out.println("Connection failed.");

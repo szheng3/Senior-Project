@@ -111,6 +111,9 @@
                             <input type="file" name="file"/>
                         </div>
                         <div class="form-group">
+                            <%String username = (String)request.getAttribute("username");
+                            System.out.println("username is: "+username);%>
+                            <input type="hidden" name="username" value="<%=username%>"/>
                             <input class="btn btn-primary" type="submit" value="upload"/>
                         </div>
                     </form>

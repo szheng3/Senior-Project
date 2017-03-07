@@ -2,13 +2,11 @@ package com.springTeam55UCI.mvc;
 
 import com.springTeam55UCI.mvc.com.util.ConnectionConfig;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.sql.*;
 
 import static com.springTeam55UCI.mvc.com.util.CheckTable.CheckTable;
@@ -18,13 +16,17 @@ import static com.springTeam55UCI.mvc.com.util.CheckTable.CheckTable;
  */
 public class ViewHistoryHandler extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         Connection connection = null;
+        String username = (String)request.getSession().getAttribute("username");
+        System.out.println("username passed to ViewHistoryHandler: "+username);
         try {
             connection = ConnectionConfig.getConnection();
             if(connection != null) {
                 System.out.println("Connection established.");
-                int last_id = CheckTable(connection, true);
+                int last_id = CheckTable(connection, username);
                 System.out.println("last id is: "+last_id);     //Debug PRINTF
                 request.setAttribute("last_id", last_id);
                 request.getSession().setMaxInactiveInterval(1440);
