@@ -13,7 +13,7 @@ public class ConnectionConfig {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","123456");
+            connection = DriverManager.getConnection("jdbc:mysql://sql3.freemysqlhosting.net:3306/sql3162493","sql3162493","rCeyV17JAN");
         } catch (SQLException se) {
             se.printStackTrace();
         } catch (Exception e) {

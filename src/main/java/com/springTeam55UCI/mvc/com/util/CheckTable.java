@@ -26,9 +26,9 @@ public class CheckTable {
                 }
                 if(!CheckOnly) {
                     last_id++;
-                    String sqlvl0 = "INSERT INTO OUTPUT(id, outputfile)" +
+                    String sqlvl0 = "INSERT INTO OUTPUT(id, outputfile, addTime)" +
                             "VALUES (";
-                    String sqlvl1 = ", NULL)";
+                    String sqlvl1 = ", NULL, DATE_SUB(NOW(), INTERVAL 8 HOUR))";
                     stmt0.executeUpdate(sqlvl0 + last_id + sqlvl1);
                     System.out.println("Tuple incremented, ready for upload.");
                 }
@@ -41,11 +41,12 @@ public class CheckTable {
                 String sqltb =  "CREATE TABLE OUTPUT " +
                         "(id INTEGER NOT NULL AUTO_INCREMENT, " +
                         "outputfile LONGBLOB, " +
+                        "addTime TIMESTAMP, " +
                         "PRIMARY KEY ( id ))";
                 stmt.executeUpdate(sqltb);
                 System.out.println("Table 'OUTPUT' Created.");
-                String sqlvl =  "INSERT INTO OUTPUT(id, outputfile)" +
-                        "VALUES (1, NULL)";
+                String sqlvl =  "INSERT INTO OUTPUT(id, outputfile, addTime)" +
+                        "VALUES (1, NULL, DATE_SUB(NOW(), INTERVAL 8 HOUR))";
                 stmt.executeUpdate(sqlvl);
                 System.out.println("Tuple created, ready for upload.");
             }

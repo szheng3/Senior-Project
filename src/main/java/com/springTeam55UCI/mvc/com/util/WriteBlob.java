@@ -17,7 +17,8 @@ public class WriteBlob {
     public static void writeBlob(Connection conn, String fileaddr, int last_id) {
         // update sql
             String updateSQL = "UPDATE OUTPUT "
-                + "SET outputfile = ? "
+                + "SET outputfile = ?, "
+                + "addTime =  DATE_SUB(NOW(), INTERVAL 8 HOUR) "
                 + "WHERE id=";
 
         try {
