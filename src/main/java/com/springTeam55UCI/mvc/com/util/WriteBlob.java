@@ -12,6 +12,8 @@ import java.sql.SQLException;
  */
 public class WriteBlob {
 
+    //TODO: ADD TIME STAMP
+
     public static void writeBlob(Connection conn, String fileaddr, int last_id) {
         // update sql
             String updateSQL = "UPDATE OUTPUT "

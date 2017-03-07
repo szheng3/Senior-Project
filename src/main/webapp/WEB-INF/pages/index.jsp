@@ -23,6 +23,8 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+    <jsp:include page="/auth"/>
+
     <style>
         body {
             background: url(http://creative-automata.com/wp-content/uploads/2015/03/binary-code-9004-2560x1600.jpg);
@@ -90,7 +92,7 @@
                     </c:choose>
                             <li><a href="${pageContext.request.contextPath}/history">View History</a></li>
 
-                <!-- TODO: create signup mechanism -->
+                <!-- TODO: LOCK BEFORE LOGIN, REQUIRED -->
 
             </ul>
         </div>
@@ -101,7 +103,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="content">
-                <h2>${message}</h2>
+                <h2>Machine Learning</h2>
                 <hr>
                 <div>
                     <form action="upload" method="post" enctype="multipart/form-data" class="form-inline">
