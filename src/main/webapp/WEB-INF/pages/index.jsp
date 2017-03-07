@@ -106,8 +106,9 @@
                 <h2>Machine Learning</h2>
                 <hr>
                 <div>
-                    <form action="${pageContext.request.contextPath}/uploadFile" method="post"
-                          enctype="multipart/form-data" class="form-inline">
+                    <form action="upload" method="post" enctype="multipart/form-data" class="form-inline">
+                        <%--<form action="${pageContext.request.contextPath}/uploadFile" method="post"--%>
+                        <%--enctype="multipart/form-data" class="form-inline">--%>
                         <div class="form-group">
                             <input type="file" name="file"/>
                         </div>
