@@ -182,3 +182,27 @@ Below is how it's done for Windows, for other OS should be similar:
    ![sqlite2](https://cloud.githubusercontent.com/assets/23114334/23053597/94f07ea8-f48f-11e6-9d9c-a4c69e9d6717.png)
 
 
+To Run MachineLearning, add VM Option in IntelliJ.
+
+0.  In Build Config, click the highlighted icon, as shown:
+
+    ![vm00](https://cloud.githubusercontent.com/assets/23114334/23646161/706fa584-02c4-11e7-894d-11fd16bcc02d.png)
+
+
+1.  Copy and paste VM Option, click "OK"
+
+    -Xms1g
+    -Xmx1g
+    -XX:MaxPermSize=2g
+    -Djava.net.preferIPv4Stack=true
+    -Dorg.jboss.resolver.warning=true
+    -Dsun.rmi.dgc.client.gcInterval=3600000
+    -Dsun.rmi.dgc.server.gcInterval=3600000
+    -Djboss.modules.system.pkgs=org.jboss.byteman
+    -Djava.awt.headless=true
+    -Djboss.server.default.config=standalone.xml
+    -XX:-UseSplitVerifier
+
+    ![vm01](https://cloud.githubusercontent.com/assets/23114334/23646190/99e0486a-02c4-11e7-8741-72d4ed7af88b.png)
+
+now you should be able to run Machine Learning algorithm.
