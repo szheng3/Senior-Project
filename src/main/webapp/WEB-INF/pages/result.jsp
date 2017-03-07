@@ -5,7 +5,8 @@
   Time: 11:45 PM
 --%>
 <%@page import="java.io.BufferedReader"%>
-<%@page import="java.io.FileReader" %>
+<%@page import="java.io.File" %>
+<%@ page import="java.io.FileReader" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -128,9 +129,11 @@
 
 
                 <%
-
+                    String rootPath = System.getProperty("catalina.home");
+                    File dir = new File(rootPath + File.separator + "tmpFiles");
                     String outputAddr = session.getServletContext().getRealPath("/");
-                    String fileName = outputAddr + "/output.txt";
+                    String fileName = dir.getAbsolutePath()
+                            + File.separator + "output.txt";
 
 //    String fileName=request.getSession().getServletContext().getRealPath("") + File.separator + "output.txt";
                     try {

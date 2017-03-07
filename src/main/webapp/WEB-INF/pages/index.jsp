@@ -106,14 +106,15 @@
                 <h2>Machine Learning</h2>
                 <hr>
                 <div>
-                    <form action="upload" method="post" enctype="multipart/form-data" class="form-inline">
+                    <form action="${pageContext.request.contextPath}/uploadFile" method="post"
+                          enctype="multipart/form-data" class="form-inline">
                         <div class="form-group">
                             <input type="file" name="file"/>
                         </div>
                         <div class="form-group">
                             <%String username = (String)request.getAttribute("username");
                             System.out.println("username is: "+username);%>
-                            <input type="hidden" name="username" value="<%=username%>"/>
+                            <input type="hidden" name="name" value="${username}"/>
                             <input class="btn btn-primary" type="submit" value="upload"/>
                         </div>
                     </form>
