@@ -1,24 +1,24 @@
 package com.springTeam55UCI.mvc;
 
 import com.springTeam55UCI.mvc.com.util.ConnectionConfig;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.*;
 
 import static com.springTeam55UCI.mvc.com.util.CheckTable.CheckTable;
-import static com.springTeam55UCI.mvc.com.util.WriteBlob.writeBlob;
 
 /**
  * Created by Leo on 2/20/2017.
  */
 public class ViewHistoryHandler extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         Connection connection = null;
         try {
             connection = ConnectionConfig.getConnection();

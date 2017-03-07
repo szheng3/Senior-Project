@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
@@ -17,8 +17,8 @@
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/early_version" />
-        <property name="username" value="senior_design" />
-        <property name="password" value="SD1617" />
+        <property name="url" value="jdbc:mysql://sql3.freemysqlhosting.net:3306/sql3162493"/>
+        <property name="username" value="sql3162493"/>
+        <property name="password" value="rCeyV17JAN"/>
     </bean>
 </beans>

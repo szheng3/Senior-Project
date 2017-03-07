@@ -4,13 +4,8 @@
   Date: 11/22/16
   Time: 11:45 PM
 --%>
-<%@page import="java.io.File"%>
-<%@page import="java.io.InputStreamReader"%>
-<%@page import="java.net.URL"%>
-<%@page import="java.io.FileReader"%>
 <%@page import="java.io.BufferedReader"%>
-<%@ page import="java.nio.file.Files" %>
-<%@ page import="java.nio.file.Paths" %>
+<%@page import="java.io.FileReader" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -97,7 +92,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="" class="navbar-brand"><span class="glyphicon glyphicon-picture"></span>
+            <a href="${pageContext.request.contextPath}/" class="navbar-brand"><span
+                    class="glyphicon glyphicon-picture"></span>
                 Home</a>
         </div>
 
