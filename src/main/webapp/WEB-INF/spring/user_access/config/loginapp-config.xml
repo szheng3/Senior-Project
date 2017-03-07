@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!--
+        The fields for classes are declared using the interface class. That way, they exact implementation class
+        for those fields can all be defined from within this one file.
+    -->
+    <bean id="loginDelegate" class="com.springUsersAccess.delegate.LoginDelegate">
+        <property name="authenticationService" ref="authenticationService"/>
+        <property name="passHashDelegate" ref="passHashDelegate" />
+        <property name="usernameService" ref="usernameService"/>
+    </bean>
+
+    <bean id="authenticationService" class="com.springUsersAccess.service.users.authentication.impl.AuthServiceImpl">
+        <property name="userDao" ref="userDao" />
+        <property name="passwordDao" ref="passwordDao" />
+    </bean>
+
+</beans>

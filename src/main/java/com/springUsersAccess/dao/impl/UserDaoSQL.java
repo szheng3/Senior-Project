@@ -1,8 +1,5 @@
 package com.springUsersAccess.dao.impl;
 
-/**
- * Created by Alex Almanza on 1/31/17.
- */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,19 +8,21 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 import com.springUsersAccess.dao.UserDao;
-import org.springframework.jdbc.datasource.SingleConnectionDataSource;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+/**
+ * Created by Alex Almanza on 1/31/17.
+ */
+public class UserDaoSQL implements UserDao {
 
-public class UserDaoSQLite implements UserDao {
-
-    private SingleConnectionDataSource dataSource ;
-    public void setDataSource(SingleConnectionDataSource dataSource) {
+    private DriverManagerDataSource dataSource ;
+    public void setDataSource(DriverManagerDataSource dataSource) {
         this.dataSource = dataSource;
     }
 
     @Override
     public boolean isUsernameTaken(String username) throws SQLException {
-         String query = "Select count(1) from user where username = ?";
+         String query = "Select count(*) from user where username = ?";
 
          try (Connection connection = dataSource.getConnection();
               PreparedStatement pstmt = connection.prepareStatement(query)) {

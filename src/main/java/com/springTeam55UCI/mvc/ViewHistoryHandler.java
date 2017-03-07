@@ -1,7 +1,6 @@
 package com.springTeam55UCI.mvc;
 
 import com.springTeam55UCI.mvc.com.util.ConnectionConfig;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,30 +10,29 @@ import java.io.*;
 import java.sql.*;
 
 import static com.springTeam55UCI.mvc.com.util.CheckTable.CheckTable;
-import static com.springTeam55UCI.mvc.com.util.WriteBlob.writeBlob;
 
 /**
  * Created by Leo on 2/20/2017.
  */
 public class ViewHistoryHandler extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection connection = null;
-        String username = request.getParameter("username");     //BUGGED, (RETURN NULL)
+        String username = (String)request.getSession().getAttribute("username");
+        System.out.println("username passed to ViewHistoryHandler: "+username);
         try {
             connection = ConnectionConfig.getConnection();
             if(connection != null) {
                 System.out.println("Connection established.");
-                System.out.println("user logged in is: "+username); //DEBUG PRINTF
-                int last_id = CheckTable(connection, true, username);
+                int last_id = CheckTable(connection, username);
                 System.out.println("last id is: "+last_id);     //Debug PRINTF
                 request.setAttribute("last_id", last_id);
                 request.getSession().setMaxInactiveInterval(1440);
                 String saveLocation = request.getSession().getServletContext().getRealPath("") + File.separator + "output";
                 System.out.println("The location to save to is: "+saveLocation);     //Debug PRINTF
                 for(int i=1;i<=last_id;i++) {
-                    String sql = "SELECT outputfile FROM output WHERE id=? AND user = ";
-                    PreparedStatement stmt = connection.prepareStatement(sql+username);
+                    String sql = "SELECT outputfile FROM output WHERE id=?";
+                    PreparedStatement stmt = connection.prepareStatement(sql);
                     stmt.setInt(1,i);
 
                     ResultSet result =stmt.executeQuery();

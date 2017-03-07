@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- defines what service implementation to use in signup -->
+    <bean id="signupDelegate" class="com.springUsersAccess.delegate.SignupDelegate">
+        <property name="newUserService" ref="newUserService" />
+        <property name="strengthService" ref="strengthService" />
+        <property name="usernameService" ref="usernameService" />
+        <property name="passHashDelegate" ref="passHashDelegate"/>
+    </bean>
+
+    <bean id="newUserService" class="com.springUsersAccess.service.users.creation.impl.LeosImpl" >
+        <property name="userDao" ref="userDao" />
+    </bean>
+
+    <!-- TODO: implement using javascript instead of locally on server -->
+    <bean id="strengthService" class="com.springUsersAccess.service.passwords.strength.impl.AllowAllPasswordsService">
+    </bean>
+
+
+    <bean id="usernameService" class="com.springUsersAccess.service.usernames.impl.NoDuplicateUsernameService">
+        <property name="userDao" ref="userDao" />
+    </bean>
+
+</beans>
