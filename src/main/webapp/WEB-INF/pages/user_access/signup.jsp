@@ -74,8 +74,8 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-nav-demo">
             <ul class="navbar-nav navbar-right nav">
+                <li>Already have an account?</li>
                 <li><a href="${pageContext.request.contextPath}/login">Log In</a></li>
-                <li><a href="${pageContext.request.contextPath}/signup">Sign Up</a></li>
             </ul>
         </div>
     </div>
