@@ -23,6 +23,7 @@ public class ViewHistoryHandler extends HttpServlet {
 
         Connection connection = null;
         String username = (String)request.getSession().getAttribute("username");
+        username = "shuaizheng";
         System.out.println("username passed to ViewHistoryHandler: "+username);
         try {
             connection = ConnectionConfig.getConnection();
