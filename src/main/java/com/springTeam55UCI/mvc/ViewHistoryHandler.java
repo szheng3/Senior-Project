@@ -20,19 +20,21 @@ public class ViewHistoryHandler extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         Connection connection = null;
+        String username = request.getParameter("username");     //BUGGED, (RETURN NULL)
         try {
             connection = ConnectionConfig.getConnection();
             if(connection != null) {
                 System.out.println("Connection established.");
-                int last_id = CheckTable(connection, true);
+                System.out.println("user logged in is: "+username); //DEBUG PRINTF
+                int last_id = CheckTable(connection, true, username);
                 System.out.println("last id is: "+last_id);     //Debug PRINTF
                 request.setAttribute("last_id", last_id);
                 request.getSession().setMaxInactiveInterval(1440);
                 String saveLocation = request.getSession().getServletContext().getRealPath("") + File.separator + "output";
                 System.out.println("The location to save to is: "+saveLocation);     //Debug PRINTF
                 for(int i=1;i<=last_id;i++) {
-                    String sql = "SELECT outputfile FROM output WHERE id=?";
-                    PreparedStatement stmt = connection.prepareStatement(sql);
+                    String sql = "SELECT outputfile FROM output WHERE id=? AND user = ";
+                    PreparedStatement stmt = connection.prepareStatement(sql+username);
                     stmt.setInt(1,i);
 
                     ResultSet result =stmt.executeQuery();

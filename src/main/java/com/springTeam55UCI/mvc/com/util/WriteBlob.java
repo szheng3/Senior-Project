@@ -14,15 +14,16 @@ public class WriteBlob {
 
     //TODO: ADD TIME STAMP
 
-    public static void writeBlob(Connection conn, String fileaddr, int last_id) {
+    public static void writeBlob(Connection conn, String fileaddr, int last_id, String username) {
         // update sql
             String updateSQL = "UPDATE OUTPUT "
                 + "SET outputfile = ?, "
-                + "addTime =  DATE_SUB(NOW(), INTERVAL 8 HOUR) "
-                + "WHERE id=";
+                + "addTime =  DATE_SUB(NOW(), INTERVAL 8 HOUR), "
+                + "user = ";
+            String updateSQL1 = " WHERE id=";
 
         try {
-            PreparedStatement psmt = conn.prepareStatement(updateSQL+last_id);
+            PreparedStatement psmt = conn.prepareStatement(updateSQL+username+updateSQL1+last_id);
             // read the file
             File file = new File(fileaddr);
             FileInputStream input = new FileInputStream(file);

@@ -28,6 +28,7 @@ public class FileUploadHandler extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().setMaxInactiveInterval(1440);
         //process only if its multipart content
+        String username = request.getParameter("username");     //BUGGED, (RETURN NULL)
         if (ServletFileUpload.isMultipartContent(request)) {
             try {
                 List<FileItem> multiparts = new ServletFileUpload(
@@ -60,8 +61,10 @@ public class FileUploadHandler extends HttpServlet {
                             connection = ConnectionConfig.getConnection();
                             if(connection != null) {
                                 System.out.println("Connection established.");
-                                int last_id = CheckTable(connection, false);
-                                writeBlob(connection, outputaddr, last_id);
+
+                                System.out.println("user logged in is: "+username); //DEBUG PRINTF
+                                int last_id = CheckTable(connection, false, username);
+                                writeBlob(connection, outputaddr, last_id, username);
                             }
                             else {
                                 System.out.println("Connection failed.");

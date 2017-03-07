@@ -92,8 +92,6 @@
                     </c:choose>
                             <li><a href="${pageContext.request.contextPath}/history">View History</a></li>
 
-                <!-- TODO: LOCK BEFORE LOGIN, REQUIRED -->
-
             </ul>
         </div>
     </div>
