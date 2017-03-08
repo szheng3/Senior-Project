@@ -2,7 +2,6 @@ package com.springTeam55UCI.mvc.com.util;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -23,8 +22,8 @@ public class WriteBlob {
         try {
             Statement stmt0 = conn.createStatement();
             last_id++;
-            String username2 = "'testuser1'";       //HARDCODE
-            String username1 = "'"+username+"'";    //Adding single quote to String.
+//            String username2 = "'testuser1'";       //HARDCODE
+            String username2 = "'" + username + "'";    //Adding single quote to String.
             String sqlvl0 = "INSERT INTO OUTPUT(user, id, outputfile, addTime) " +
                     "VALUES (";
             String sqlvl1 = ", NULL, DATE_SUB(NOW(), INTERVAL 8 HOUR))";
