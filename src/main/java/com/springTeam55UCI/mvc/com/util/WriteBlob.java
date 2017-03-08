@@ -13,7 +13,7 @@ import java.sql.Statement;
  */
 public class WriteBlob {
     public static void writeBlob(Connection conn, String fileaddr, int last_id, String username) {
-        System.out.println("username passed to CheckTable: "+username);
+        System.out.println("username passed to WriteBlob: "+username);
         // update sql
             String updateSQL = "UPDATE OUTPUT "
                 + "SET outputfile = ?, "
@@ -23,10 +23,12 @@ public class WriteBlob {
         try {
             Statement stmt0 = conn.createStatement();
             last_id++;
-            String sqlvl0 = "INSERT INTO OUTPUT(user, id, outputfile, addTime)" +
+            String username2 = "'testuser1'";       //HARDCODE
+            String username1 = "'"+username+"'";    //Adding single quote to String.
+            String sqlvl0 = "INSERT INTO OUTPUT(user, id, outputfile, addTime) " +
                     "VALUES (";
             String sqlvl1 = ", NULL, DATE_SUB(NOW(), INTERVAL 8 HOUR))";
-            stmt0.executeUpdate(sqlvl0 + username + ", " + last_id + sqlvl1);
+            stmt0.executeUpdate(sqlvl0 + username2 + ", " + last_id + sqlvl1);
             System.out.println("Tuple incremented, ready for upload.");
 
 
@@ -36,7 +38,7 @@ public class WriteBlob {
             FileInputStream input = new FileInputStream(file);
             psmt.setBinaryStream(1, input);
 
-            // store the resume file in database
+            // store the file in database
             System.out.println("Reading file " + file.getAbsolutePath());
             System.out.println("Storing file into the database.");
             psmt.executeUpdate();
