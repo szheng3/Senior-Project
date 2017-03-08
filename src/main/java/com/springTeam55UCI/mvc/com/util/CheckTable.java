@@ -19,7 +19,8 @@ public class CheckTable {
             if (tables.next()) {
                 System.out.println("Table 'OUTPUT' exists. Tuple ready for upload.");
                 Statement stmt0 = conn.createStatement();
-                ResultSet rs = stmt0.executeQuery("SELECT MAX(ID) AS ID FROM OUTPUT WHERE user="+username);
+                String sql0 = "SELECT MAX(ID) AS ID FROM OUTPUT WHERE user='"+username+"'";
+                ResultSet rs = stmt0.executeQuery(sql0);
                 if(rs.next()) {
                     last_id = rs.getInt("ID");
                     System.out.println("last gen ID is " + last_id);

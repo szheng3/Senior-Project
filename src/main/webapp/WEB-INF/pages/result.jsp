@@ -112,7 +112,6 @@
                     </c:otherwise>
                 </c:choose>
 
-                <!-- TODO: create signup mechanism -->
 
             </ul>
         </div>
@@ -132,7 +131,7 @@
                     String rootPath = System.getProperty("catalina.home");
                     File dir = new File(rootPath + File.separator + "tmpFiles");
                     String outputAddr = session.getServletContext().getRealPath("/");
-                    String fileName = dir.getAbsolutePath()
+                    String fileName = request.getSession().getServletContext().getRealPath("")
                             + File.separator + "output.txt";
 
 //    String fileName=request.getSession().getServletContext().getRealPath("") + File.separator + "output.txt";

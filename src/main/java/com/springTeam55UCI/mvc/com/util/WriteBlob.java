@@ -28,11 +28,11 @@ public class WriteBlob {
             String sqlvl0 = "INSERT INTO OUTPUT(user, id, outputfile, addTime) " +
                     "VALUES (";
             String sqlvl1 = ", NULL, DATE_SUB(NOW(), INTERVAL 8 HOUR))";
-            stmt0.executeUpdate(sqlvl0 + username2 + ", " + last_id + sqlvl1);
+            stmt0.executeUpdate(sqlvl0 + username2 + ", " + last_id + sqlvl1);  //TEMP!!!!!CHANGE username2 TO username1
             System.out.println("Tuple incremented, ready for upload.");
 
 
-            PreparedStatement psmt = conn.prepareStatement(updateSQL+last_id+updateSQL1+username);
+            PreparedStatement psmt = conn.prepareStatement(updateSQL+last_id+updateSQL1+username2);  //TEMP!!!!!CHANGE username2 TO username1
             // read the file
             File file = new File(fileaddr);
             FileInputStream input = new FileInputStream(file);
