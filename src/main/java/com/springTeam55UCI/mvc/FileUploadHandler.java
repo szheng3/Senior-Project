@@ -25,9 +25,7 @@ public class FileUploadHandler extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         request.getSession().setMaxInactiveInterval(1440);
-        String username = (String)request.getSession().getAttribute("username");
-        username = "testuser1";
-        System.out.println("username passed to FileUploadHandler: "+username);
+
         //process only if its multipart content
         if (ServletFileUpload.isMultipartContent(request)) {
             try {
@@ -57,6 +55,8 @@ public class FileUploadHandler extends HttpServlet {
                         //System.out.println(outputaddr);
 
                         Connection connection = null;
+                        String username = (String) request.getSession().getAttribute("username");
+                        username = "testuser1";
                         try {
                             connection = ConnectionConfig.getConnection();
                             if(connection != null) {
