@@ -23,7 +23,7 @@ public class ViewHistoryHandler extends HttpServlet {
 
         Connection connection = null;
         String username = (String)request.getSession().getAttribute("username");
-        String username0 = "testuser1";   //TEMP!!!!! delete
+        String username0 = "shuaizheng";   //TEMP!!!!! delete
         System.out.println("username passed to ViewHistoryHandler: "+username0);    //TEMP!!!!! change username0 to username
         try {
             connection = ConnectionConfig.getConnection();
@@ -38,7 +38,7 @@ public class ViewHistoryHandler extends HttpServlet {
                 for(int i=1;i<=last_id;i++) {
                     String sql = "SELECT outputfile FROM OUTPUT WHERE id=? AND USER=?";
 
-                    String username2= "testuser1";
+                    String username2 = username0;
                     String username1 = username;
                     PreparedStatement stmt = connection.prepareStatement(sql);
                     stmt.setInt(1,i);
