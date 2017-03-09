@@ -67,14 +67,13 @@ With above preparation done, simulate the website with following steps:
     So make sure you are using the Ultimate version.
     ![idea_10](https://cloud.githubusercontent.com/assets/23114334/21920019/5a8656c6-d913-11e6-8996-8f0a0bb71358.png)
 
-To Run MachineLearning, add VM Option in IntelliJ.
+    To Run MachineLearning, add VM Option in IntelliJ.
 
-0.  In Build Config, click the highlighted icon, as shown:
+12.  In Build Config, click the highlighted icon, as shown:
 
     ![vm0](https://cloud.githubusercontent.com/assets/23114334/23767571/da1a8ce2-04bd-11e7-82fd-e8d9a6343b19.png)
 
-
-1.  Copy and paste VM Option, click "OK"
+13.  Copy and paste VM Option, click "OK"
 
     -Xms1g
     -Xmx1g
@@ -90,83 +89,80 @@ To Run MachineLearning, add VM Option in IntelliJ.
 
     ![vm1](https://cloud.githubusercontent.com/assets/23114334/23767580/e227a0a0-04bd-11e7-8a43-8aaaf32ef661.png)
 
-now you should be able to run Machine Learning algorithm.
+    now you should be able to run Machine Learning algorithm.
 
-
-12. This should be the window you see after previous step.
+14. This should be the window you see after previous step.
     Click "Deployment", and click the "+" bottom on the right, choose "Artifact..."
     ![idea_11](https://cloud.githubusercontent.com/assets/23114334/21920052/8a761de4-d913-11e6-9e24-20df17d85cd4.png)
     ![idea_12](https://cloud.githubusercontent.com/assets/23114334/21920071/a6ef5792-d913-11e6-9e01-ad5328e1e229.png)
 
-13. Choose "SeniorProject:war", click "OK"
+15. Choose "SeniorProject:war", click "OK"
 
     ![idea_13](https://cloud.githubusercontent.com/assets/23114334/21920081/c1ce90f0-d913-11e6-97ba-89f848cde10e.png)
 
-14. Click "OK"
+16. Click "OK"
     ![idea_14](https://cloud.githubusercontent.com/assets/23114334/21920095/d17f8e96-d913-11e6-99f8-d70cced705b4.png)
 
-15. At the top right corner of the main window, click the left most icon to build your project.
+17. At the top right corner of the main window, click the left most icon to build your project.
     Then click the third bottom which looks like a green play bottom,
     and wait for just a sec IntelliJ should be opening your website for you automatically.
     Shown below is the opened demo version of our project.
     ![idea_15](https://cloud.githubusercontent.com/assets/23114334/21920107/e08af6f0-d913-11e6-8239-181c1ef59467.png)
     ![idea_16](https://cloud.githubusercontent.com/assets/23114334/21920157/27013ed2-d914-11e6-923d-1146084bdcfd.png)
 
-To run our Obfuscated .jar file in JBoss Environment,
-first we need to add the Obfuscated .jar file as lib in IntelliJ.
+To run our Project in JBoss Environment,
+first we need to add 2 .jar files as lib in IntelliJ.
 Following below steps to set up lib.
 
-1.  in IntelliJ top left corner, File - Project Structure
+18.  in IntelliJ top left corner, File - Project Structure
     ![lib00](https://cloud.githubusercontent.com/assets/23114334/22007888/412ea442-dc2b-11e6-88b2-76573bdc7095.png)
 
 
-2.  go to Libraries - click "+" - Java
+19.  go to Libraries - click "+" - Java
     ![lib01](https://cloud.githubusercontent.com/assets/23114334/22007922/92b585c4-dc2b-11e6-8f68-52fe782c3e38.png)
 
 
-3.  Choose the Obfuscation .jar file, it's located in:
+20.  Choose the Obfuscation .jar file, it's located in:
     {Project root location}/src/main/webapp/WEB-INF/lib
     Click "OK"
 
-    ![lib02r1](https://cloud.githubusercontent.com/assets/23114334/23768142/e07a3aa4-04bf-11e7-9333-4c5599678787.png)
+   ![lib02r1](https://cloud.githubusercontent.com/assets/23114334/23768142/e07a3aa4-04bf-11e7-9333-4c5599678787.png)
 
 
-4.  Click "OK" to add this library as module
+21.  Click "OK" to add this library as module
 
-    ![lib02r2](https://cloud.githubusercontent.com/assets/23114334/23768153/e87733d8-04bf-11e7-869b-e6986f858cd7.png)
+   ![lib02r2](https://cloud.githubusercontent.com/assets/23114334/23768153/e87733d8-04bf-11e7-869b-e6986f858cd7.png)
 
 
 do the same for mysql-connector-java-5.1.40.jar, located at the same location. 
 
-5.  now it should be all done.
+22.  now it should be all done.
     Check Libraries we can see a new 3rd party lib "obfuscation" and "mysql-connector-java-5.1.40" are added
 
-    ![lib03r](https://cloud.githubusercontent.com/assets/23114334/23768268/540ae522-04c0-11e7-9315-7d43cc9764e1.png)
+   ![lib03r](https://cloud.githubusercontent.com/assets/23114334/23768268/540ae522-04c0-11e7-9315-7d43cc9764e1.png)
 
 
-6.  Check Modules, a new "obfuscated" module is added.
+23.  Check Modules, a new "obfuscation" and jdbc module is added.
 
-    ![lib04r](https://cloud.githubusercontent.com/assets/23114334/23768327/750e9480-04c0-11e7-8931-4ca14c1ce12b.png)
+   ![lib04r](https://cloud.githubusercontent.com/assets/23114334/23768327/750e9480-04c0-11e7-8931-4ca14c1ce12b.png)
 
 
-7.  Now we should be able to run the Obfuscated .jar in JBoss Environment.
+24.  Now we should be able to run the project in JBoss Environment.
     Click the run bottom, project will be built and IntelliJ will automatically open the website for us:
-    Click "Choose File" bottom
-    ![web0](https://cloud.githubusercontent.com/assets/23114334/22008047/5f32a3de-dc2c-11e6-8a25-58f33fe3fbd5.png)
-    
-8.  Shown is the first page you will see using our website, it's a log-in windows.
+    Shown is the first page you will see using our website, it's a log-in windows.
     Authentication prevents use of website without login. 
     Now create your account and start explore our project website!
     
-    ![demo0](https://cloud.githubusercontent.com/assets/23114334/23768508/2224b712-04c1-11e7-9727-006269a25ea8.png)
+    
+   ![demo0](https://cloud.githubusercontent.com/assets/23114334/23768508/2224b712-04c1-11e7-9727-006269a25ea8.png)
 
-    ![demo2](https://cloud.githubusercontent.com/assets/23114334/23768525/371fde80-04c1-11e7-9a32-5dd3167113b1.png)
+   ![demo2](https://cloud.githubusercontent.com/assets/23114334/23768525/371fde80-04c1-11e7-9a32-5dd3167113b1.png)
     
-    ![demo1](https://cloud.githubusercontent.com/assets/23114334/23768516/2b870d78-04c1-11e7-9142-d622a6eb12c7.png)
+   ![demo1](https://cloud.githubusercontent.com/assets/23114334/23768516/2b870d78-04c1-11e7-9142-d622a6eb12c7.png)
     
-    ![demo3](https://cloud.githubusercontent.com/assets/23114334/23768535/3c7ad3d0-04c1-11e7-9e3f-ecbb430373ba.png)
+   ![demo3](https://cloud.githubusercontent.com/assets/23114334/23768535/3c7ad3d0-04c1-11e7-9e3f-ecbb430373ba.png)
     
-    ![demo5](https://cloud.githubusercontent.com/assets/23114334/23770123/ad4a5bee-04c6-11e7-80df-389dafc38d92.png)
+   ![demo5](https://cloud.githubusercontent.com/assets/23114334/23770123/ad4a5bee-04c6-11e7-80df-389dafc38d92.png)
 
-    The sample input file for our Machine Learning algorithm is located at:
+   The sample input file for our Machine Learning algorithm is located at:
     src\main\webapp\WEB-INF\lib
