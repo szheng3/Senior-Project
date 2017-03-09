@@ -62,7 +62,11 @@ public class SignupController {
                 signupDelegate.createUser(signupBean.getUsername(), signupBean.getPassword());
 
                 // Create a model object to take the user to the login screen
-                model = new ModelAndView("redirect:/login");
+//                model = new ModelAndView("redirect:/login");
+                model = new ModelAndView("../index");
+                model.addObject("username", signupBean.getUsername());
+
+
 
                 // Create a login bean based on input to used to make the new user
                 LoginBean loginBean = new LoginBean();
