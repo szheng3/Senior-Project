@@ -160,10 +160,13 @@ do the same for mysql-connector-java-5.1.40.jar, located at the same location.
     
     ![demo0](https://cloud.githubusercontent.com/assets/23114334/23768508/2224b712-04c1-11e7-9727-006269a25ea8.png)
 
-    ![demo1](https://cloud.githubusercontent.com/assets/23114334/23768516/2b870d78-04c1-11e7-9142-d622a6eb12c7.png)
-
     ![demo2](https://cloud.githubusercontent.com/assets/23114334/23768525/371fde80-04c1-11e7-9a32-5dd3167113b1.png)
+    
+    ![demo1](https://cloud.githubusercontent.com/assets/23114334/23768516/2b870d78-04c1-11e7-9142-d622a6eb12c7.png)
     
     ![demo3](https://cloud.githubusercontent.com/assets/23114334/23768535/3c7ad3d0-04c1-11e7-9e3f-ecbb430373ba.png)
     
     ![demo4](https://cloud.githubusercontent.com/assets/23114334/23768544/4113e580-04c1-11e7-89fc-646e6b56c490.png)
+
+    The sample input file for our Machine Learning algorithm is located at:
+    src\main\webapp\WEB-INF\lib
