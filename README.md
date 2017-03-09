@@ -67,6 +67,31 @@ With above preparation done, simulate the website with following steps:
     So make sure you are using the Ultimate version.
     ![idea_10](https://cloud.githubusercontent.com/assets/23114334/21920019/5a8656c6-d913-11e6-8996-8f0a0bb71358.png)
 
+Extra Step for Running Machine Learning:
+To Run MachineLearning, add VM Option in IntelliJ.
+
+E.0.  In Build Config, click the highlighted icon, as shown:
+
+    ![vm0](https://cloud.githubusercontent.com/assets/23114334/23767571/da1a8ce2-04bd-11e7-82fd-e8d9a6343b19.png)
+
+E.1.  Copy and paste VM Option, click "OK"
+
+    -Xms1g
+    -Xmx1g
+    -XX:MaxPermSize=2g
+    -Djava.net.preferIPv4Stack=true
+    -Dorg.jboss.resolver.warning=true
+    -Dsun.rmi.dgc.client.gcInterval=3600000
+    -Dsun.rmi.dgc.server.gcInterval=3600000
+    -Djboss.modules.system.pkgs=org.jboss.byteman
+    -Djava.awt.headless=true
+    -Djboss.server.default.config=standalone.xml
+    -XX:-UseSplitVerifier
+
+    ![vm1](https://cloud.githubusercontent.com/assets/23114334/23767580/e227a0a0-04bd-11e7-8a43-8aaaf32ef661.png)
+
+now you should be able to run Machine Learning algorithm.
+
 12. This should be the window you see after previous step.
     Click "Deployment", and click the "+" bottom on the right, choose "Artifact..."
     ![idea_11](https://cloud.githubusercontent.com/assets/23114334/21920052/8a761de4-d913-11e6-9e24-20df17d85cd4.png)
@@ -152,57 +177,3 @@ Add JDBC ver 5.1.40 as lib, it's stored in wepapp/WEB-INF/lib in the project fol
 Make sure in your IntelliJ Project Structures you see it in BOTH Modules and Libraries. As below:
     ![mysql0](https://cloud.githubusercontent.com/assets/23114334/22181524/37de19a6-e043-11e6-8b98-aa67efa38635.png)
     ![mysql1](https://cloud.githubusercontent.com/assets/23114334/22181528/47aa2c6c-e043-11e6-8d8c-914f4d6497fe.png)
-
-
-To work with SQLite, since we are running our project within JBoss container,
-and when trying to connect to SQLite DB it will automatically looking for the server folder,
-we need to hard-link (Symbolic Link for Win) from our Project folder to Server folder.
-In below tutorial, database in each locations are:
-Project Folder: D:\SeniorProj\Senior-Project-Early-Version\src\main\resources
-Server  Folder: D:\jboss-as-7.1.1.Final\jboss-as-7.1.1.Final\bin
-
-Originally, we should have user_db.sqlite in our project folder but not in our server folder.
-We need to make a symbolic link from our project folder to our server folder.
-Below is how it's done for Windows, for other OS should be similar:
-
-0. Open CMD as Admin
-
-    ![sqlite0](https://cloud.githubusercontent.com/assets/23114334/23053452/85a83414-f48e-11e6-9a87-e834730fb42f.png)
-
-1. Run Command Line as 
-    mklink "targetFolder\user_db.sqlite" "originalFolder\user_db.sqlite"
-   In my example, my command looks like:
-   
-   ![sqlite1](https://cloud.githubusercontent.com/assets/23114334/23053583/76692e80-f48f-11e6-84f5-ac650ae38a6e.png)
-
-   You should see the success prompt just like I did.
-   
-2. Now you should see the symlink file in the server folder, as shown:
-
-   ![sqlite2](https://cloud.githubusercontent.com/assets/23114334/23053597/94f07ea8-f48f-11e6-9d9c-a4c69e9d6717.png)
-
-
-To Run MachineLearning, add VM Option in IntelliJ.
-
-0.  In Build Config, click the highlighted icon, as shown:
-
-    ![vm00](https://cloud.githubusercontent.com/assets/23114334/23646161/706fa584-02c4-11e7-894d-11fd16bcc02d.png)
-
-
-1.  Copy and paste VM Option, click "OK"
-
-    -Xms1g
-    -Xmx1g
-    -XX:MaxPermSize=2g
-    -Djava.net.preferIPv4Stack=true
-    -Dorg.jboss.resolver.warning=true
-    -Dsun.rmi.dgc.client.gcInterval=3600000
-    -Dsun.rmi.dgc.server.gcInterval=3600000
-    -Djboss.modules.system.pkgs=org.jboss.byteman
-    -Djava.awt.headless=true
-    -Djboss.server.default.config=standalone.xml
-    -XX:-UseSplitVerifier
-
-    ![vm01](https://cloud.githubusercontent.com/assets/23114334/23646190/99e0486a-02c4-11e7-8741-72d4ed7af88b.png)
-
-now you should be able to run Machine Learning algorithm.
