@@ -67,8 +67,8 @@ With above preparation done, simulate the website with following steps:
     So make sure you are using the Ultimate version.
     ![idea_10](https://cloud.githubusercontent.com/assets/23114334/21920019/5a8656c6-d913-11e6-8996-8f0a0bb71358.png)
 
-
 To Run MachineLearning, add VM Option in IntelliJ.
+
 0.  In Build Config, click the highlighted icon, as shown:
 
     ![vm0](https://cloud.githubusercontent.com/assets/23114334/23767571/da1a8ce2-04bd-11e7-82fd-e8d9a6343b19.png)
@@ -124,50 +124,46 @@ Following below steps to set up lib.
     ![lib01](https://cloud.githubusercontent.com/assets/23114334/22007922/92b585c4-dc2b-11e6-8f68-52fe782c3e38.png)
 
 
-3.  Choose the Obfuscated .jar file, it's located in:
+3.  Choose the Obfuscation .jar file, it's located in:
     {Project root location}/src/main/webapp/WEB-INF/lib
     Click "OK"
-    ![lib02](https://cloud.githubusercontent.com/assets/23114334/22007943/a929c69e-dc2b-11e6-9060-c22cc271be33.png)
+
+    ![lib02r1](https://cloud.githubusercontent.com/assets/23114334/23768142/e07a3aa4-04bf-11e7-9333-4c5599678787.png)
 
 
 4.  Click "OK" to add this library as module
 
-    ![lib02a](https://cloud.githubusercontent.com/assets/23114334/22007977/d62900ec-dc2b-11e6-93df-a972eea535ee.png)
+    ![lib02r2](https://cloud.githubusercontent.com/assets/23114334/23768153/e87733d8-04bf-11e7-869b-e6986f858cd7.png)
 
+
+do the same for mysql-connector-java-5.1.40.jar, located at the same location. 
 
 5.  now it should be all done.
-    Check Libraries we can see a new 3rd party lib "obfuscated" is added
-    ![lib03](https://cloud.githubusercontent.com/assets/23114334/22007980/de071826-dc2b-11e6-82cf-d8031823ee76.png)
+    Check Libraries we can see a new 3rd party lib "obfuscation" and "mysql-connector-java-5.1.40" are added
+
+    ![lib03r](https://cloud.githubusercontent.com/assets/23114334/23768268/540ae522-04c0-11e7-9315-7d43cc9764e1.png)
 
 
 6.  Check Modules, a new "obfuscated" module is added.
-    ![lib04](https://cloud.githubusercontent.com/assets/23114334/22008002/01432096-dc2c-11e6-9aa3-496308740cbf.png)
+
+    ![lib04r](https://cloud.githubusercontent.com/assets/23114334/23768327/750e9480-04c0-11e7-8931-4ca14c1ce12b.png)
 
 
 7.  Now we should be able to run the Obfuscated .jar in JBoss Environment.
     Click the run bottom, project will be built and IntelliJ will automatically open the website for us:
     Click "Choose File" bottom
     ![web0](https://cloud.githubusercontent.com/assets/23114334/22008047/5f32a3de-dc2c-11e6-8a25-58f33fe3fbd5.png)
+    
+8.  Shown is the first page you will see using our website, it's a log-in windows.
+    Authentication prevents use of website without login. 
+    Now create your account and start explore our project website!
+    
+    ![demo0](https://cloud.githubusercontent.com/assets/23114334/23768508/2224b712-04c1-11e7-9727-006269a25ea8.png)
 
+    ![demo1](https://cloud.githubusercontent.com/assets/23114334/23768516/2b870d78-04c1-11e7-9142-d622a6eb12c7.png)
 
-8.  A window will pop up.
-    The test .jar is a java program which calls Johnsons's Algorithm to sort a given graph.
-    Let's select the data text file for the graph, as shown below:
-    (it is stored in the root folder of this project)
-    Click "Open" johnsonsGraphData.txt
-    ![web1](https://cloud.githubusercontent.com/assets/23114334/22008088/b894db18-dc2c-11e6-948c-8c3a585d556d.png)
-
-
-9.  Click "upload"
-    ![web2](https://cloud.githubusercontent.com/assets/23114334/22008106/de45efb4-dc2c-11e6-8430-86ec0fec16da.png)
-
-
-10. It will upload the data .txt file and Obfuscated Johnson's Algorithm will run.
-    If it runs successfully, the output will be displayed as a table.
-    ![web3](https://cloud.githubusercontent.com/assets/23114334/22008140/28d09ab6-dc2d-11e6-83ba-a97650b6b4c8.png)
-
-To use DataBase, set MySQL as following:
-Add JDBC ver 5.1.40 as lib, it's stored in wepapp/WEB-INF/lib in the project folder.
-Make sure in your IntelliJ Project Structures you see it in BOTH Modules and Libraries. As below:
-    ![mysql0](https://cloud.githubusercontent.com/assets/23114334/22181524/37de19a6-e043-11e6-8b98-aa67efa38635.png)
-    ![mysql1](https://cloud.githubusercontent.com/assets/23114334/22181528/47aa2c6c-e043-11e6-8d8c-914f4d6497fe.png)
+    ![demo2](https://cloud.githubusercontent.com/assets/23114334/23768525/371fde80-04c1-11e7-9a32-5dd3167113b1.png)
+    
+    ![demo3](https://cloud.githubusercontent.com/assets/23114334/23768535/3c7ad3d0-04c1-11e7-9e3f-ecbb430373ba.png)
+    
+    ![demo4](https://cloud.githubusercontent.com/assets/23114334/23768544/4113e580-04c1-11e7-89fc-646e6b56c490.png)
