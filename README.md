@@ -67,31 +67,6 @@ With above preparation done, simulate the website with following steps:
     So make sure you are using the Ultimate version.
     ![idea_10](https://cloud.githubusercontent.com/assets/23114334/21920019/5a8656c6-d913-11e6-8996-8f0a0bb71358.png)
 
-Extra Step for Running Machine Learning:
-To Run MachineLearning, add VM Option in IntelliJ.
-
-E.0.  In Build Config, click the highlighted icon, as shown:
-
-    ![vm0](https://cloud.githubusercontent.com/assets/23114334/23767571/da1a8ce2-04bd-11e7-82fd-e8d9a6343b19.png)
-
-E.1.  Copy and paste VM Option, click "OK"
-
-    -Xms1g
-    -Xmx1g
-    -XX:MaxPermSize=2g
-    -Djava.net.preferIPv4Stack=true
-    -Dorg.jboss.resolver.warning=true
-    -Dsun.rmi.dgc.client.gcInterval=3600000
-    -Dsun.rmi.dgc.server.gcInterval=3600000
-    -Djboss.modules.system.pkgs=org.jboss.byteman
-    -Djava.awt.headless=true
-    -Djboss.server.default.config=standalone.xml
-    -XX:-UseSplitVerifier
-
-    ![vm1](https://cloud.githubusercontent.com/assets/23114334/23767580/e227a0a0-04bd-11e7-8a43-8aaaf32ef661.png)
-
-now you should be able to run Machine Learning algorithm.
-
 12. This should be the window you see after previous step.
     Click "Deployment", and click the "+" bottom on the right, choose "Artifact..."
     ![idea_11](https://cloud.githubusercontent.com/assets/23114334/21920052/8a761de4-d913-11e6-9e24-20df17d85cd4.png)
@@ -177,3 +152,27 @@ Add JDBC ver 5.1.40 as lib, it's stored in wepapp/WEB-INF/lib in the project fol
 Make sure in your IntelliJ Project Structures you see it in BOTH Modules and Libraries. As below:
     ![mysql0](https://cloud.githubusercontent.com/assets/23114334/22181524/37de19a6-e043-11e6-8b98-aa67efa38635.png)
     ![mysql1](https://cloud.githubusercontent.com/assets/23114334/22181528/47aa2c6c-e043-11e6-8d8c-914f4d6497fe.png)
+
+
+To Run MachineLearning, add VM Option in IntelliJ.
+
+0.  In Build Config, click the highlighted icon, as shown:
+
+
+
+1.  Copy and paste VM Option, click "OK"
+
+    -Xms1g
+    -Xmx1g
+    -XX:MaxPermSize=2g
+    -Djava.net.preferIPv4Stack=true
+    -Dorg.jboss.resolver.warning=true
+    -Dsun.rmi.dgc.client.gcInterval=3600000
+    -Dsun.rmi.dgc.server.gcInterval=3600000
+    -Djboss.modules.system.pkgs=org.jboss.byteman
+    -Djava.awt.headless=true
+    -Djboss.server.default.config=standalone.xml
+    -XX:-UseSplitVerifier
+
+
+now you should be able to run Machine Learning algorithm.
