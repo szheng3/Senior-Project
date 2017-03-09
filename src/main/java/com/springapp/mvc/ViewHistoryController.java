@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.*;
 import java.sql.*;
 
 import static com.springTeam55UCI.mvc.com.util.CheckTable.CheckTable;
@@ -46,7 +47,7 @@ public class ViewHistoryController {
                 String saveLocation = request.getSession().getServletContext().getRealPath("") + File.separator + "output";
                 System.out.println("The location to save to is: " + saveLocation);     //Debug PRINTF
                 for (int i = 1; i <= last_id; i++) {
-                    String sql = "SELECT outputfile FROM OUTPUT WHERE id=? AND USER=?";
+                    String sql = "SELECT addTime, outputfile FROM OUTPUT WHERE id=? AND USER=?";
 
                     String username2 = username0;
                     String username1 = username;
@@ -56,6 +57,8 @@ public class ViewHistoryController {
 
                     ResultSet result = stmt.executeQuery();
                     if (result.next()) {
+                        Timestamp addedTime = result.getTimestamp("addTime");
+                        System.out.println("file num "+i+" has addTime: "+addedTime);
                         Blob blob = result.getBlob("outputfile");
                         InputStream inputstream = blob.getBinaryStream();
                         OutputStream outputstream = new FileOutputStream(saveLocation + i + ".txt");
@@ -67,6 +70,13 @@ public class ViewHistoryController {
                         }
                         inputstream.close();
                         outputstream.close();
+
+                        OutputStream outputstream1 = new FileOutputStream(saveLocation + i + "_time.txt");
+                        PrintStream printStream1 = new PrintStream(outputstream1);
+                        printStream1.print("Result BLOB Upload Time: "+addedTime);
+                        printStream1.close();
+                        outputstream1.close();
+
                         System.out.println("File " + i + " stored locally");
                     }
                 }

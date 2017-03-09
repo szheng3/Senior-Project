@@ -124,6 +124,17 @@
                 sb.append(line+"\n");
             }
             out.println(sb.toString());
+
+            %>
+        <br/>
+        <%
+            BufferedReader bfrdr1 = new BufferedReader(new FileReader(txtFilePath+i+"_time.txt"));
+            StringBuilder sb1 = new StringBuilder();
+            String line1;
+            while((line1 = bfrdr1.readLine())!=null) {
+                sb1.append(line1+"\n");
+            }
+            out.println(sb1.toString());
         %>
         <br/>
         <%
