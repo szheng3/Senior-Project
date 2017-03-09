@@ -158,6 +158,7 @@ To Run MachineLearning, add VM Option in IntelliJ.
 
 0.  In Build Config, click the highlighted icon, as shown:
 
+    ![vm0](https://cloud.githubusercontent.com/assets/23114334/23767571/da1a8ce2-04bd-11e7-82fd-e8d9a6343b19.png)
 
 
 1.  Copy and paste VM Option, click "OK"
@@ -174,5 +175,6 @@ To Run MachineLearning, add VM Option in IntelliJ.
     -Djboss.server.default.config=standalone.xml
     -XX:-UseSplitVerifier
 
+    ![vm1](https://cloud.githubusercontent.com/assets/23114334/23767580/e227a0a0-04bd-11e7-8a43-8aaaf32ef661.png)
 
 now you should be able to run Machine Learning algorithm.
