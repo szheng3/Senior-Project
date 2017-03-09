@@ -90,7 +90,7 @@
                             <li><a href="${pageContext.request.contextPath}/signup">Sign Up</a></li>
                         </c:otherwise>
                     </c:choose>
-                            <li><a href="${pageContext.request.contextPath}/history">View History</a></li>
+                <li><a href="${pageContext.request.contextPath}/viewhistory/${username}">View History</a></li>
 
                 <!-- TODO: LOCK BEFORE LOGIN, REQUIRED -->
 
