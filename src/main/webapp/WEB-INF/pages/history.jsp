@@ -85,7 +85,7 @@
                 <c:choose>
                     <c:when test="${username!=null}">
                         <li><a><c:out value="${username}"/></a></li>
-                        <li><a href="${pageContext.request.contextPath}/login">Switch Account</a></li>
+                        <li><a href="${pageContext.request.contextPath}/login">Log Out</a></li>
                     </c:when>
                     <c:otherwise>
                         <li><a href="${pageContext.request.contextPath}/login">Log In</a></li>
