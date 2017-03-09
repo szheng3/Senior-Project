@@ -31,6 +31,7 @@ public class UploadFileController2 {
     private static final Logger logger = LoggerFactory
             .getLogger(UploadFileController2.class);
 
+
     /**
      * Upload single file using Spring Controller
      */
