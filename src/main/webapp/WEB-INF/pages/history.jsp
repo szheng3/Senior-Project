@@ -44,7 +44,7 @@
         }
 
         .content {
-            padding-top: 10%;
+            padding-top: 3%;
             text-align: center;
             text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
             0px 8px 13px rgba(0, 0, 0, 0.1),
@@ -56,6 +56,7 @@
             border-top: 1px solid #f8f8f8;
             border-bottom: 1px solid rgba(0, 0, 0, 0.2);
         }
+
 
     </style>
 
@@ -73,7 +74,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="${pageContext.request.contextPath}/" class="navbar-brand"><span
+            <a href="${pageContext.request.contextPath}/?username=${username}" class="navbar-brand"><span
                     class="glyphicon glyphicon-picture"></span>
                 Home</a>
         </div>
@@ -99,30 +100,37 @@
 </nav>
 
 <div class="container">
-    <br/>
-<a>The number of files being read is:<%=request.getAttribute("last_id") %></a> <br/>
-<a><%
-    int last_id = (Integer)request.getAttribute("last_id");
-    String outputAddr = session.getServletContext().getRealPath("/");
-    for(int i=1; i<=last_id; i++) {
-%>            <br/>
-    <%
-        out.println("The BLOB number "+i+" returns result:");
-    %>            <br/>
-    <%
-        String txtFilePath = outputAddr+ "/output";
-        BufferedReader bfrdr = new BufferedReader(new FileReader(txtFilePath+i+".txt"));
-        StringBuilder sb = new StringBuilder();
-        String line;
-        while((line = bfrdr.readLine())!=null){
-            sb.append(line+"\n");
-        }
-        out.println(sb.toString());
-    %>
-    <br/>
-    <%
-        }
-    %></a>
+    <div class="content">
+
+        <br/>
+        The number of files being read is:<%=request.getAttribute("last_id") %>
+        <br/>
+        <%
+            int last_id = (Integer)request.getAttribute("last_id");
+            String outputAddr = session.getServletContext().getRealPath("/");
+            for(int i = 1; i<=last_id; i++) {
+        %>
+        <br/>
+        <%
+            out.println("The BLOB number "+i+" returns result:");
+        %>
+        <br/>
+        <%
+            String txtFilePath = outputAddr+ "/output";
+            BufferedReader bfrdr = new BufferedReader(new FileReader(txtFilePath+i+".txt"));
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while((line = bfrdr.readLine())!=null){
+                sb.append(line+"\n");
+            }
+            out.println(sb.toString());
+        %>
+        <br/>
+        <%
+            }
+        %>
+    </div>
+
 </div>
 </body>
 </html>

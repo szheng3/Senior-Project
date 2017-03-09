@@ -93,7 +93,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="${pageContext.request.contextPath}/" class="navbar-brand"><span
+            <a href="${pageContext.request.contextPath}/?username=${username}" class="navbar-brand"><span
                     class="glyphicon glyphicon-picture"></span>
                 Home</a>
         </div>

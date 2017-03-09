@@ -40,6 +40,8 @@ public class ViewHistoryController {
                 int last_id = CheckTable(connection, username0);    //TEMP!!!!! change username0 to username
                 System.out.println("last id is: " + last_id);     //Debug PRINTF
                 request.setAttribute("last_id", last_id);
+                request.setAttribute("username", objectId);
+
                 request.getSession().setMaxInactiveInterval(1440);
                 String saveLocation = request.getSession().getServletContext().getRealPath("") + File.separator + "output";
                 System.out.println("The location to save to is: " + saveLocation);     //Debug PRINTF
