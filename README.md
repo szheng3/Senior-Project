@@ -166,3 +166,8 @@ do the same for mysql-connector-java-5.1.40.jar, located at the same location.
 
    The sample input file for our Machine Learning algorithm is located at:
     src\main\webapp\WEB-INF\lib
+    
+    
+   # References:
+    
+   deeplearning4j:https://deeplearning4j.org/
